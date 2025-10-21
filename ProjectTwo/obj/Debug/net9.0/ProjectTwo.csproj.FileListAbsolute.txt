@@ -1,0 +1,15 @@
+C:\Users\JonathanApple\OneDrive\School\CSC255 Stuff\project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas\ProjectTwo\bin\Debug\net9.0\ProjectTwo.exe
+C:\Users\JonathanApple\OneDrive\School\CSC255 Stuff\project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas\ProjectTwo\bin\Debug\net9.0\ProjectTwo.deps.json
+C:\Users\JonathanApple\OneDrive\School\CSC255 Stuff\project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas\ProjectTwo\bin\Debug\net9.0\ProjectTwo.runtimeconfig.json
+C:\Users\JonathanApple\OneDrive\School\CSC255 Stuff\project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas\ProjectTwo\bin\Debug\net9.0\ProjectTwo.dll
+C:\Users\JonathanApple\OneDrive\School\CSC255 Stuff\project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas\ProjectTwo\bin\Debug\net9.0\ProjectTwo.pdb
+C:\Users\JonathanApple\OneDrive\School\CSC255 Stuff\project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas\ProjectTwo\obj\Debug\net9.0\ProjectTwo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\JonathanApple\OneDrive\School\CSC255 Stuff\project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas\ProjectTwo\obj\Debug\net9.0\ProjectTwo.AssemblyInfoInputs.cache
+C:\Users\JonathanApple\OneDrive\School\CSC255 Stuff\project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas\ProjectTwo\obj\Debug\net9.0\ProjectTwo.AssemblyInfo.cs
+C:\Users\JonathanApple\OneDrive\School\CSC255 Stuff\project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas\ProjectTwo\obj\Debug\net9.0\ProjectTwo.csproj.CoreCompileInputs.cache
+C:\Users\JonathanApple\OneDrive\School\CSC255 Stuff\project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas\ProjectTwo\obj\Debug\net9.0\ProjectTwo.sourcelink.json
+C:\Users\JonathanApple\OneDrive\School\CSC255 Stuff\project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas\ProjectTwo\obj\Debug\net9.0\ProjectTwo.dll
+C:\Users\JonathanApple\OneDrive\School\CSC255 Stuff\project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas\ProjectTwo\obj\Debug\net9.0\refint\ProjectTwo.dll
+C:\Users\JonathanApple\OneDrive\School\CSC255 Stuff\project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas\ProjectTwo\obj\Debug\net9.0\ProjectTwo.pdb
+C:\Users\JonathanApple\OneDrive\School\CSC255 Stuff\project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas\ProjectTwo\obj\Debug\net9.0\ProjectTwo.genruntimeconfig.cache
+C:\Users\JonathanApple\OneDrive\School\CSC255 Stuff\project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas\ProjectTwo\obj\Debug\net9.0\ref\ProjectTwo.dll
