@@ -27,21 +27,21 @@ class ChooseCharacter
 class Elena
 {
     private CharacterName _Elena_Name = new() { Name = "Elena" };
-    private CharacterAbilities _Elena_Abilities = new() { Strength1 = "Game Development", Strength1_Value = 2, Stength2 = "Computer Science", Strength2_Value = 1, Weakness = "Biology", Weakness_Value = -2 };
+    private CharacterAbilities _Elena_Abilities = new() { Strength1 = "Game Development", Strength1_Value = 10, Stength2 = "Computer Science", Strength2_Value = 5, Weakness = "Biology", Weakness_Value = -10 };
 
 }
 
 class Kate
 {
     private CharacterName _Kate_Name = new() { Name = "Kate" };
-    private CharacterAbilities _Kate_Abilities = new() { Strength1 = "Spanish", Strength1_Value = 2, Stength2 = "French", Strength2_Value = 1, Weakness = "Art History", Weakness_Value = -2 };
+    private CharacterAbilities _Kate_Abilities = new() { Strength1 = "Spanish", Strength1_Value = 10, Stength2 = "French", Strength2_Value = 5, Weakness = "Art History", Weakness_Value = -10 };
 
 }
 
 class Jonathan
 {
     private CharacterName _Jonathan_Name = new() { Name = "Jonathan" };
-    private CharacterAbilities _Jonathan_Abilities = new() { Strength1 = "Cybersecurity", Strength1_Value = 2, Stength2 = "Computer Science", Strength2_Value = 1, Weakness = "World Civilizations", Weakness_Value = -2 };
+    private CharacterAbilities _Jonathan_Abilities = new() { Strength1 = "Cybersecurity", Strength1_Value = 10, Stength2 = "Computer Science", Strength2_Value = 5, Weakness = "World Civilizations", Weakness_Value = -10 };
    
 }
 
