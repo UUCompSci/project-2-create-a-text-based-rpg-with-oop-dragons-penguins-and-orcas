@@ -3,20 +3,20 @@
 
 class ChooseCharacter
 {
-    private string player;
+    private string _player_Character;
 
     public void Character(int choice)
     {
         switch (choice)
         {
             case 1:
-                player = "Elena";
+                _player_Character = "Elena";
                 break;
             case 2:
-                player = "Kate";
+                _player_Character = "Kate";
                 break;
             case 3:
-                player = "Jonathan";
+                _player_Character = "Jonathan";
                 break;
             default:
                 Checks.ErrorMessage();
