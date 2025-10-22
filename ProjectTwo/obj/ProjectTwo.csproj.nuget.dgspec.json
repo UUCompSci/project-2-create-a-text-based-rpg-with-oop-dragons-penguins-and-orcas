@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/nugget/Desktop/project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas/ProjectTwo/ProjectTwo.csproj": {}
+    "C:\\Users\\salsa\\OneDrive\\Documents\\GitHub\\project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas\\ProjectTwo\\ProjectTwo.csproj": {}
   },
   "projects": {
-    "/Users/nugget/Desktop/project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas/ProjectTwo/ProjectTwo.csproj": {
+    "C:\\Users\\salsa\\OneDrive\\Documents\\GitHub\\project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas\\ProjectTwo\\ProjectTwo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/nugget/Desktop/project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas/ProjectTwo/ProjectTwo.csproj",
+        "projectUniqueName": "C:\\Users\\salsa\\OneDrive\\Documents\\GitHub\\project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas\\ProjectTwo\\ProjectTwo.csproj",
         "projectName": "ProjectTwo",
-        "projectPath": "/Users/nugget/Desktop/project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas/ProjectTwo/ProjectTwo.csproj",
-        "packagesPath": "/Users/nugget/.nuget/packages/",
-        "outputPath": "/Users/nugget/Desktop/project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas/ProjectTwo/obj/",
+        "projectPath": "C:\\Users\\salsa\\OneDrive\\Documents\\GitHub\\project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas\\ProjectTwo\\ProjectTwo.csproj",
+        "packagesPath": "C:\\Users\\salsa\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\salsa\\OneDrive\\Documents\\GitHub\\project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas\\ProjectTwo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/nugget/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\salsa\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -59,7 +59,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.304/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
