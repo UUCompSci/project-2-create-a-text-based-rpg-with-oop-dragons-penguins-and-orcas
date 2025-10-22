@@ -1,6 +1,29 @@
 // Author: Elena Hazard
 // Date: 10/20/2025
 
+class ChooseCharacter
+{
+    private string player;
+
+    public void Character(int choice)
+    {
+        switch (choice)
+        {
+            case 1:
+                player = "Elena";
+                break;
+            case 2:
+                player = "Kate";
+                break;
+            case 3:
+                player = "Jonathan";
+                break;
+            default:
+                Checks.ErrorMessage();
+                break;
+        }
+    }
+}
 class Elena
 {
     private CharacterName _Elena_Name = new() { Name = "Elena" };

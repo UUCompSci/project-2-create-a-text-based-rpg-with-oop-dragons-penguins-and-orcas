@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "bJBB4zqs3Rw=",
   "success": true,
   "projectFilePath": "C:\\Users\\jonat\\OneDrive\\School\\CSC255 Stuff\\project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas\\ProjectTwo\\ProjectTwo.csproj",
+=======
+  "dgSpecHash": "FpY0m5xey20=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\salsa\\OneDrive\\Documents\\GitHub\\project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas\\ProjectTwo\\ProjectTwo.csproj",
+>>>>>>> 895e05ca599b8890219f5221968d99950d21bde6
   "expectedPackageFiles": [],
   "logs": []
 }
