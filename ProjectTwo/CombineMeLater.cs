@@ -39,7 +39,7 @@ class PlayerCharacter
         get => _energy;
         private set => _energy = Math.Clamp(value, 0, 100);
     }
-//.clamp to keep energy and grade between 0 and 100
+    //.clamp to keep energy and grade between 0 and 100
 
     public void UpdateEnergy(int change)
     {
@@ -47,9 +47,25 @@ class PlayerCharacter
     }
 
     public void UpdateGrade(int change, SchoolClass classType)//update grade with classType parameter
-
     {
         Grade += change;
+    }
+
+
+    // ADDED BY JONATHAN
+    // stuff for the merch store lol
+    public double _BusterBucks { get; set; }
+    private List<string> _Inventory = new();
+    public void DisplayInventory() // also copied from me and William's project
+    {
+        foreach (string item in _Inventory)
+        {
+            Console.WriteLine("- " + item);
+        }
+    }
+    public void AddItemToInventory(string item) // also also copied from me and William's project
+    {
+        _Inventory.Add(item);
     }
 }
 
@@ -209,8 +225,18 @@ class ClassSession
         switch (playerInput)
         {
             case 1:
-                breakSession.RunBreakSession(player, LocationsEnum.DormRoom, );
+                breakSession.GoToDormRoom(player);
+                break;
+
+            case 2:
+                breakSession.GoToCobo(player);
+                break;
+
+            case 3:
+                breakSession.GoToMerchStore(player, testItems);
+                break;
         }
+        StuffWeNeed.PrintStatus(player); // print the player status after the break
     }
 
     private void HandleSpecialEvent(PlayerCharacter player, string eventName)

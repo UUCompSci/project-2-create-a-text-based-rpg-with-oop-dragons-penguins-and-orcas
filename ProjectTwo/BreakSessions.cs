@@ -22,30 +22,30 @@ class BreakSessions
     private Enum _Location; // dorm room is default
     public Enum GetLocation => _Location;
 
-    public void GoToDormRoom(TempVaraibles obj)
+    public void GoToDormRoom(PlayerCharacter obj)
     {
         _Location = LocationsEnum.DormRoom;
         Write("You went to your room...");
 
         // you have enough energy to study
-        if (obj._EnergyLevel >= 50)
+        if (obj.Energy >= 50)
         {
             // you're study level increases depending on how energized you are
-            int studyIncrease = obj._EnergyLevel / 10;
-            obj._StudyLevel += studyIncrease;
+            int studyIncrease = obj.Energy / 10;
+            obj.UpdateGrade(studyIncrease, SchoolClass.Bible);
 
-            WriteLine($"and studied for a bit! Your Study-Level increased by {studyIncrease}!");
+            WriteLine($"and studied for a bit! Your Grade increased by {studyIncrease}!");
         }
 
         // you're too tired and fall asleep
         else
         {
-            obj._EnergyLevel += 50;
-            WriteLine("and fell asleep! Your Energy-Level increased by 50.");
+            obj.UpdateEnergy(50);
+            WriteLine("and fell asleep! Your Energy increased by 50.");
         }
     }
 
-    public void GoToCobo(TempVaraibles obj)
+    public void GoToCobo(PlayerCharacter obj)
     {
         _Location = LocationsEnum.Cobo;
         Write("You went to COBO for a meal...");
@@ -70,40 +70,40 @@ class BreakSessions
 
                 if (homestyleEffect >= 7)
                 {
-                    obj._EnergyLevel += 50;
-                    WriteLine("and decided to get homestyle. It was actually good today! Your Energy-Level increased by 60!");
+                    obj.UpdateEnergy(50);
+                    WriteLine("and decided to get homestyle. It was actually good today! Your Energy increased by 60!");
                 }
                 else
                 {
-                    obj._EnergyLevel += 15;
-                    WriteLine("and decided to get homestyle. It wasn't good, and you didn't eat much of it. Your Energy-Level increased by 15.");
+                    obj.UpdateEnergy(15);
+                    WriteLine("and decided to get homestyle. It wasn't good, and you didn't eat much of it. Your Energy increased by 15.");
                 }
 
                 break;
 
             case CoboMealsEnum.TacoBar: // they always give you way too much food haha
-                obj._EnergyLevel += 75;
-                WriteLine("and decided to go through the taco bar. You were given so much food, and it was good! Your Energy-Level increased by 75!");
+                obj.UpdateEnergy(75);
+                WriteLine("and decided to go through the taco bar. You were given so much food, and it was good! Your Energy increased by 75!");
                 break;
 
             case CoboMealsEnum.Dessert: // somehow this increases your energy MORE than bad homestyle
-                obj._EnergyLevel += 25;
-                WriteLine("and decided to get...just dessert? Man does it taste good, but your Energy-Level only increases by 25.");
+                obj.UpdateEnergy(25);
+                WriteLine("and decided to get...just dessert? Man does it taste good, but your Energy only increases by 25.");
                 break;
 
             case CoboMealsEnum.SaladBar: // I'll take Elena's word on this xD
-                obj._EnergyLevel -= 15;
-                WriteLine("and you decide to look over the salad bar. As usual, there's not anything edible. Your Energy-Level decreases by 15...");
+                obj.UpdateEnergy(-15);
+                WriteLine("and you decide to look over the salad bar. As usual, there's not anything edible. Your Energy decreases by 15...");
                 break;
 
             default: // pizza's typically solid
-                obj._EnergyLevel += 50;
-                WriteLine("and decided to get pizza. It's typically solid. Your Energy-Level increased by 50.");
+                obj.UpdateEnergy(50);
+                WriteLine("and decided to get pizza. It's typically solid. Your Energy increased by 50.");
                 break;
         }
     }
 
-    public void GoToMerchStore(TempVaraibles obj, List<StoreItem> items)
+    public void GoToMerchStore(PlayerCharacter obj, List<StoreItem> items)
     {
         _Location = LocationsEnum.MerchStore;
         WriteLine("You went to the merch store. Here's what you can buy:");
@@ -145,7 +145,7 @@ class BreakSessions
         }
     }
 
-    public void RunBreakSession(TempVaraibles obj, Enum location, List<StoreItem> storeItems)
+    public void RunBreakSession(PlayerCharacter obj, Enum location, List<StoreItem> storeItems)
     {
         switch (location)
         {

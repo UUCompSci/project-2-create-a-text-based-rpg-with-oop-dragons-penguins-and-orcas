@@ -8,16 +8,11 @@
     "net9.0": []
   },
   "packageFolders": {
-<<<<<<< HEAD
     "C:\\Users\\jonat\\.nuget\\packages\\": {}
-=======
-    "C:\\Users\\salsa\\.nuget\\packages\\": {}
->>>>>>> 895e05ca599b8890219f5221968d99950d21bde6
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\jonat\\OneDrive\\School\\CSC255 Stuff\\project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas\\ProjectTwo\\ProjectTwo.csproj",
       "projectName": "ProjectTwo",
       "projectPath": "C:\\Users\\jonat\\OneDrive\\School\\CSC255 Stuff\\project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas\\ProjectTwo\\ProjectTwo.csproj",
@@ -26,16 +21,6 @@
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\jonat\\AppData\\Roaming\\NuGet\\NuGet.Config"
-=======
-      "projectUniqueName": "C:\\Users\\salsa\\OneDrive\\Documents\\GitHub\\project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas\\ProjectTwo\\ProjectTwo.csproj",
-      "projectName": "ProjectTwo",
-      "projectPath": "C:\\Users\\salsa\\OneDrive\\Documents\\GitHub\\project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas\\ProjectTwo\\ProjectTwo.csproj",
-      "packagesPath": "C:\\Users\\salsa\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\salsa\\OneDrive\\Documents\\GitHub\\project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas\\ProjectTwo\\obj\\",
-      "projectStyle": "PackageReference",
-      "configFilePaths": [
-        "C:\\Users\\salsa\\AppData\\Roaming\\NuGet\\NuGet.Config"
->>>>>>> 895e05ca599b8890219f5221968d99950d21bde6
       ],
       "originalTargetFrameworks": [
         "net9.0"
@@ -83,5 +68,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\jonat\\OneDrive\\School\\CSC255 Stuff\\project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas\\ProjectTwo\\obj\\project.nuget.cache : '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0."
+    }
+  ]
 }
