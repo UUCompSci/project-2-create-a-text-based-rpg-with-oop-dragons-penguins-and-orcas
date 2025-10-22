@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/nugget/Desktop/project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas-1/ProjectTwo/ProjectTwo.csproj",
+      "projectUniqueName": "/Users/nugget/Desktop/project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas/ProjectTwo/ProjectTwo.csproj",
       "projectName": "ProjectTwo",
-      "projectPath": "/Users/nugget/Desktop/project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas-1/ProjectTwo/ProjectTwo.csproj",
+      "projectPath": "/Users/nugget/Desktop/project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas/ProjectTwo/ProjectTwo.csproj",
       "packagesPath": "/Users/nugget/.nuget/packages/",
-      "outputPath": "/Users/nugget/Desktop/project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas-1/ProjectTwo/obj/",
+      "outputPath": "/Users/nugget/Desktop/project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas/ProjectTwo/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/nugget/.nuget/NuGet/NuGet.Config"
