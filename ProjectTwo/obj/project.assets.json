@@ -8,19 +8,19 @@
     "net9.0": []
   },
   "packageFolders": {
-    "C:\\Users\\JonathanApple\\.nuget\\packages\\": {}
+    "/Users/nugget/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\JonathanApple\\OneDrive\\School\\CSC255 Stuff\\project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas\\ProjectTwo\\ProjectTwo.csproj",
+      "projectUniqueName": "/Users/nugget/Desktop/project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas-1/ProjectTwo/ProjectTwo.csproj",
       "projectName": "ProjectTwo",
-      "projectPath": "C:\\Users\\JonathanApple\\OneDrive\\School\\CSC255 Stuff\\project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas\\ProjectTwo\\ProjectTwo.csproj",
-      "packagesPath": "C:\\Users\\JonathanApple\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\JonathanApple\\OneDrive\\School\\CSC255 Stuff\\project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas\\ProjectTwo\\obj\\",
+      "projectPath": "/Users/nugget/Desktop/project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas-1/ProjectTwo/ProjectTwo.csproj",
+      "packagesPath": "/Users/nugget/.nuget/packages/",
+      "outputPath": "/Users/nugget/Desktop/project-2-create-a-text-based-rpg-with-oop-dragons-penguins-and-orcas-1/ProjectTwo/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\JonathanApple\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/Users/nugget/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
@@ -65,7 +65,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.304/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
