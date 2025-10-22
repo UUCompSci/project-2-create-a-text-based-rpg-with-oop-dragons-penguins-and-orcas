@@ -4,26 +4,22 @@ using static System.Console;
 
 
 // for testing
-TempVaraibles tempObject = new();
-tempObject._EnergyLevel = 40;
-tempObject._StudyLevel = 60;
-tempObject._BusterBucks = 198.46;
+// TempVaraibles tempObject = new();
+// tempObject._EnergyLevel = 40;
+// tempObject._StudyLevel = 60;
+// tempObject._BusterBucks = 198.46;
 
-StoreItem testBook = new("Testbook", 62.79, "A testbook, not a textbook.");
-StoreItem textBook = new("Textbook", 71.58, "This, however, IS a textbook.");
+// StoreItem testBook = new("Testbook", 62.79, "A testbook, not a textbook.");
+// StoreItem textBook = new("Textbook", 71.58, "This, however, IS a textbook.");
 
-List<StoreItem> testItems = [ testBook, textBook ];
+// List<StoreItem> testItems = [ testBook, textBook ];
 
-BreakSessions testSession = new(LocationsEnum.DormRoom);
-testSession.RunBreakSession(tempObject, LocationsEnum.MerchStore, testItems);
+// BreakSessions testSession = new(LocationsEnum.DormRoom);
+// testSession.RunBreakSession(tempObject, LocationsEnum.MerchStore, testItems);
 
 class BreakSessions
 {
     private Enum _Location; // dorm room is default
-    public BreakSessions(Enum location)
-    {
-        _Location = location;
-    }
     public Enum GetLocation => _Location;
 
     public void GoToDormRoom(TempVaraibles obj)

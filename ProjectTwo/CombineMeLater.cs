@@ -187,6 +187,30 @@ class ClassSession
 
         Console.WriteLine($"Class {ClassType} ended. Current status:");
         StuffWeNeed.PrintStatus(player);//tell play energy/grade level
+
+
+        // ADDED BY JONATHAN
+        // go on break after class
+        BreakSessions breakSession = new();
+
+        Console.WriteLine("You have a break! Where would you like to go?");
+        Console.WriteLine("1. Dorm Room.");
+        Console.WriteLine("2. COBO.");
+        Console.WriteLine("3. Merch Store.");
+
+        // test items for the Merch Stroe
+        StoreItem testBook = new("Testbook", 62.79, "A testbook, not a textbook.");
+        StoreItem textBook = new("Textbook", 71.58, "This, however, IS a textbook.");
+
+        List<StoreItem> testItems = [testBook, textBook];
+
+        // get player input
+        int playerInput = int.Parse(Console.ReadLine());
+        switch (playerInput)
+        {
+            case 1:
+                breakSession.RunBreakSession(player, LocationsEnum.DormRoom, );
+        }
     }
 
     private void HandleSpecialEvent(PlayerCharacter player, string eventName)
@@ -373,6 +397,7 @@ public partial class Program
             (classOrder[i], classOrder[j]) = (classOrder[j], classOrder[i]);
         }
 
+        PlayerCharacter player = new();
 
         //run classes in shuffled order
         foreach (var schoolClass in classOrder)
