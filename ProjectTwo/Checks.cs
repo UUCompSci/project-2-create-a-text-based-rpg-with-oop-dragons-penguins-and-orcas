@@ -10,17 +10,18 @@ static class Checks
         Console.WriteLine("Input is invalid. Please use one of the listed keys.");
     }
 
-    // static void WinConditions()
-    // {
-    //     if (_grade >= 70)
-    //     {
-    //         Console.WriteLine("You have gotten at least a C in all of your classes! You do not have to retake any classes next semester! Congratulations!");
-    //     }
-    //     else
-    //     {
-    //         Console.WriteLine("You have not gotten a C in your classes and you will have to retake them next semester!");
-    //     }
-    // }
+    public static void WinConditions(int grade)
+    {
+        Console.WriteLine("\nIt is the end of the semester at last and you have just received your grades back, the results are...");
+        if (grade >= 70)
+        {
+            Console.WriteLine("You have gotten at least a C in all of your classes! You do not have to retake any classes next semester! Congratulations!");
+        }
+        else
+        {
+            Console.WriteLine("You have not gotten a C in your classes and you will have to retake them next semester!");
+        }
+    }
 }
 
 public static class CheckKey

@@ -518,5 +518,6 @@ public partial class Program
             var session = new ClassSession(schoolClass, professor);
             session.Run(player);//this part doesn't work right now but this line but "player" here will be updated once the rest of code is combined
         }
+        Checks.WinConditions(player.Grade);
     }
 }
