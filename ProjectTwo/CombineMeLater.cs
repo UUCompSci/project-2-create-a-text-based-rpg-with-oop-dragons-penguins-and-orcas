@@ -25,6 +25,7 @@ public record Professor(string Name, SchoolClass ClassType);
 class PlayerCharacter
 {
     //player classes go here
+    private CharacterAbilities _abilities = new();
     private int _grade;
     private int _energy;
     //grade and energy are both 0 to 100. each action taken will either decrease or increase grade and energy
@@ -423,6 +424,18 @@ public partial class Program
             (classOrder[i], classOrder[j]) = (classOrder[j], classOrder[i]);
         }
 
+
+        // CHOOSE YOUR CHARACTER
+        Console.WriteLine("Choose your character:");
+        Console.WriteLine("1. Jonathan.");
+        Console.WriteLine("2. Elena.");
+        Console.WriteLine("3. Kate.");
+
+        int characterChoice = int.Parse(Console.ReadLine());
+        switch (characterChoice)
+        {
+            
+        }
         PlayerCharacter player = new();
 
         //run classes in shuffled order

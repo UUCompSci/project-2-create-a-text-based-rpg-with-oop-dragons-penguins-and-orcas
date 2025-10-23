@@ -164,25 +164,25 @@ class BreakSessions
     }
 }
 
-class TempVaraibles // I spelled 'Variables' wrong xD
-{
-    public int _EnergyLevel { get; set; }
-    public int _StudyLevel { get; set; }
-    public double _BusterBucks { get; set; }
+// class TempVaraibles // I spelled 'Variables' wrong xD
+// {
+//     public int _EnergyLevel { get; set; }
+//     public int _StudyLevel { get; set; }
+//     public double _BusterBucks { get; set; }
 
-    private List<string> _Inventory = new();
-    public void DisplayInventory() // also copied from me and William's project
-    {
-        foreach (string item in _Inventory)
-        {
-            Console.WriteLine("- " + item);
-        }
-    }
-    public void AddItemToInventory(string item) // also also copied from me and William's project
-    {
-        _Inventory.Add(item);
-    }
-}
+//     private List<string> _Inventory = new();
+//     public void DisplayInventory() // also copied from me and William's project
+//     {
+//         foreach (string item in _Inventory)
+//         {
+//             Console.WriteLine("- " + item);
+//         }
+//     }
+//     public void AddItemToInventory(string item) // also also copied from me and William's project
+//     {
+//         _Inventory.Add(item);
+//     }
+// }
 
 class StoreItem
 {
