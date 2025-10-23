@@ -70,10 +70,21 @@ class PlayerCharacter
 
 
     // STUFF FOR ELENA
-    private CharacterStats _abilities = new();
-    public PlayerCharacter(CharacterStats abilities)
+    private string _strength;
+    private string _weakness;
+    private int _strValue;
+    private int _wknValue;
+    public void AdjustStats(CharacterStats characterName)
     {
-        _abilities = abilities;
+        _strength = characterName.Strength;
+        _weakness = characterName.Weakness;
+        _strValue = characterName.Strength_Value;
+        _wknValue = characterName.Weakness_Value;
+    }
+    public void DisplayStats()
+    {
+        Console.WriteLine($"Class Strength: {_strength}. You get a {_strValue} boost to your grade with this class.");
+        Console.WriteLine($"Class Weakness: {_weakness}. You get a {_wknValue} point decrease when you're in this class.");
     }
 }
 
@@ -434,6 +445,7 @@ public partial class Program
 
         // CHOOSE YOUR CHARACTER
         Character chara = new();
+        CharacterStats chosenCharacter = new();
 
         Console.WriteLine("Choose your character:");
         Console.WriteLine("1. Jonathan.");
@@ -443,9 +455,30 @@ public partial class Program
         int characterChoice = int.Parse(Console.ReadLine());
         switch (characterChoice)
         {
-            
+            case 1:
+                chosenCharacter = chara._Jonathan;
+                break;
+
+            case 2:
+                chosenCharacter = chara._Elena;
+                break;
+
+            case 3:
+                chosenCharacter = chara._Kate;
+                break;
+
+            default:
+                Checks.ErrorMessage();
+                break;
         }
+
+        // CREATE THE CHARACTER
         PlayerCharacter player = new();
+        player.AdjustStats(chosenCharacter);
+
+        Console.WriteLine($"You have chosen {chosenCharacter.Name}! Here are their stats:");
+        player.DisplayStats();
+        Console.WriteLine();
 
         //run classes in shuffled order
         foreach (var schoolClass in classOrder)
