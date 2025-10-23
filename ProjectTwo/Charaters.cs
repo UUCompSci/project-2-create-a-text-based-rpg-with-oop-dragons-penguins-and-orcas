@@ -8,7 +8,7 @@ class Character
 
 // Kate's stats.
 
-    public CharacterStats _Kate = new() { Name = "Kate", Strength = "French", Strength_Value = 10, Weakness = "Art History", Weakness_Value = -10 };
+    public CharacterStats _Kate = new() { Name = "Kate", Strength = "French", Strength_Value = 10, Weakness = "ArtHistory", Weakness_Value = -10 };
 
 // Jonathan's stats.
     public CharacterStats _Jonathan = new() { Name = "Jonathan", Strength = "ComputerScience", Strength_Value = 10, Weakness = "WorldCiv", Weakness_Value = -10 };
