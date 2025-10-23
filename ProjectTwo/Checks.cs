@@ -5,7 +5,6 @@ static class Checks
         ConsoleKey getKey = Console.ReadKey(true).Key;
         return getKey;
     }
-
     public static void ErrorMessage()
     {
         Console.WriteLine("Input is invalid. Please use one of the listed keys.");
@@ -23,3 +22,15 @@ static class Checks
     //     }
     // }
 }
+
+public static class CheckKey
+    {
+        public const ConsoleKey _1 = ConsoleKey.D1;
+        public const ConsoleKey _2 = ConsoleKey.D2;
+        public const ConsoleKey _3 = ConsoleKey.D3;
+        public const ConsoleKey _4 = ConsoleKey.D4;
+        public const ConsoleKey _5 = ConsoleKey.D5;
+        public const ConsoleKey _6 = ConsoleKey.D6;
+        public const ConsoleKey _7 = ConsoleKey.D7;
+        public const ConsoleKey _8 = ConsoleKey.D8;
+    }

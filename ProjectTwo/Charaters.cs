@@ -4,14 +4,14 @@
 // Elena's stats.
 class Character 
 {
-    public CharacterStats _Elena = new() { Name = "Elena", Strength = "Computer Science", Strength_Value = 10, Weakness = "Biology", Weakness_Value = -10 };
+    public CharacterStats _Elena = new() { Name = "Elena", Strength = "ComputerScience", Strength_Value = 10, Weakness = "Biology", Weakness_Value = 10 };
 
 // Kate's stats.
 
-    public CharacterStats _Kate = new() { Name = "Kate", Strength = "French", Strength_Value = 10, Weakness = "ArtHistory", Weakness_Value = -10 };
+    public CharacterStats _Kate = new() { Name = "Kate", Strength = "French", Strength_Value = 10, Weakness = "ArtHistory", Weakness_Value = 10 };
 
 // Jonathan's stats.
-    public CharacterStats _Jonathan = new() { Name = "Jonathan", Strength = "ComputerScience", Strength_Value = 10, Weakness = "WorldCiv", Weakness_Value = -10 };
+    public CharacterStats _Jonathan = new() { Name = "Jonathan", Strength = "ComputerScience", Strength_Value = 10, Weakness = "WorldCiv", Weakness_Value = 10 };
 }
 
 // Makes a record of the character's name, strengths, and weaknesses.

@@ -46,9 +46,33 @@ class PlayerCharacter
         Energy += change; //updates energy level
     }
 
+    // Modified by ELena to support the strengths and weaknesses of the characters.
     public void UpdateGrade(int change, SchoolClass classType)//update grade with classType parameter
     {
-        Grade += change;
+        if (classType == SchoolClass.ComputerScience & _strength == "ComputerScience")
+        {
+            Grade += change + _strValue;
+        }
+        else if (classType == SchoolClass.French & _strength == "French")
+        {
+            Grade += change + _strValue;
+        }
+        else if (classType == SchoolClass.Biology & _weakness == "Biology")
+        {
+            Grade += change - _wknValue;
+        }
+        else if (classType == SchoolClass.WorldCiv & _weakness == "WorldCiv")
+        {
+            Grade += change - _wknValue;
+        }
+        else if (classType == SchoolClass.ArtHistory & _weakness == "ArtHistory")
+        {
+            Grade += change - _wknValue;
+        }
+        else
+        {
+            Grade += change;
+        }
     }
 
 
@@ -152,70 +176,74 @@ class ClassSession
             Console.WriteLine("7 - Daydream About Wing Wednesday (+10 Energy, -10 Grade)");
             Console.WriteLine("8 - Skip Class (+50 Energy, -40 Grade, ends class immediately)");
 
-            var input = Console.ReadLine();
+            // var input = Console.ReadLine();
 
-            if (!int.TryParse(input, out int choice) || choice < 1 || choice > 8)
-            {
-                Console.WriteLine("Not an option. Try again!");
-                continue;
-            }
+            // if (!int.TryParse(input, out int choice) || choice < 1 || choice > 8)
+            // {
+            //     Console.WriteLine("Not an option. Try again!");
+            //     continue;
+            // }
 
-            switch (choice)
+            switch (Checks.GetKey())
             {
-                case 1: // Ask questions
+                case CheckKey._1: // Ask questions
                     player.UpdateEnergy(-10);
                     player.UpdateGrade(10, ClassType);
-                    StuffWeNeed.PrintActionResult("good job asking quetions!", player);
+                    StuffWeNeed.PrintActionResult("good job asking questions!", player);
                     actionsLeft--;
                     break;
 
-                case 2: //participate in discussions
+                case CheckKey._2: //participate in discussions
                     player.UpdateEnergy(-10);
                     player.UpdateGrade(10, ClassType);
                     StuffWeNeed.PrintActionResult("You participated in discussions. Energy decreased, grade increased.", player);
                     actionsLeft--;
                     break;
 
-                case 3: //decode professor's terrible handwriting
+                case CheckKey._3: //decode professor's terrible handwriting
                     player.UpdateEnergy(-5);
                     player.UpdateGrade(5, ClassType);
                     StuffWeNeed.PrintActionResult("You tried have miraculously succeeded in decoding the professor's handwriting. Slight energy spent, slight grade boost.", player);
                     actionsLeft--;
                     break;
 
-                case 4: //quote philosopher to sound smart
+                case CheckKey._4: //quote philosopher to sound smart
                     player.UpdateEnergy(-5);
                     player.UpdateGrade(5, ClassType);
                     StuffWeNeed.PrintActionResult("You quoted some random philosopher and now everyone things you're smarter than you actually are. Energy down, grade up.", player);
                     actionsLeft--;
                     break;
 
-                case 5: //go to bathroom
+                case CheckKey._5: //go to bathroom
                     player.UpdateEnergy(5);
                     player.UpdateGrade(-5, ClassType);
                     StuffWeNeed.PrintActionResult("You went to the bathroom even though you didn't really need to. Energy up, grade down.", player);
                     actionsLeft--;
                     break;
 
-                case 6: //text your BFF ♥︎
+                case CheckKey._6: //text your BFF ♥︎
                     player.UpdateEnergy(5);
                     player.UpdateGrade(-5, ClassType);
                     StuffWeNeed.PrintActionResult("You texted your BFF silly memes. Energy up, grade down.", player);
                     actionsLeft--;
                     break;
 
-                case 7: //daydream about wing wednesday!
+                case CheckKey._7: //daydream about wing wednesday!
                     player.UpdateEnergy(10);
                     player.UpdateGrade(-10, ClassType);
                     StuffWeNeed.PrintActionResult("You daydreamed about wing wednesday. Energy up, grade down more.", player);
                     actionsLeft--;
                     break;
 
-                case 8: //kkip class
+                case CheckKey._8: //kkip class
                     player.UpdateEnergy(50);
                     player.UpdateGrade(-40, ClassType);
                     StuffWeNeed.PrintActionResult("You skipped class! Bige energy boost, grade goes down by a lot. Class ends immediately.", player);
                     actionsLeft = 0; //automatically end class
+                    break;
+
+                default:
+                    Checks.ErrorMessage();
                     break;
             }
         }
@@ -240,19 +268,22 @@ class ClassSession
         List<StoreItem> testItems = [testBook, textBook];
 
         // get player input
-        int playerInput = int.Parse(Console.ReadLine());
-        switch (playerInput)
+        // int playerInput = int.Parse(Console.ReadLine());
+        switch (Checks.GetKey())
         {
-            case 1:
+            case CheckKey._1:
                 breakSession.GoToDormRoom(player);
                 break;
 
-            case 2:
+            case CheckKey._2:
                 breakSession.GoToCobo(player);
                 break;
 
-            case 3:
+            case CheckKey._3:
                 breakSession.GoToMerchStore(player, testItems);
+                break;
+            default:
+                Checks.ErrorMessage();
                 break;
         }
         StuffWeNeed.PrintStatus(player); // print the player status after the break
@@ -274,8 +305,8 @@ class ClassSession
                 Console.WriteLine("How will you respond?:");
                 Console.WriteLine("1 - Decide class is not worth going to anymore");
                 Console.WriteLine("2 - Try to keep learning in the dark");
-                var input = Console.ReadLine();
-                if (input == "1")
+                ConsoleKey input = Checks.GetKey();
+                if (input == CheckKey._1)
                 {
                     player.UpdateGrade(-10, ClassType);
                     player.UpdateEnergy(10);
@@ -294,8 +325,8 @@ class ClassSession
                 Console.WriteLine("how will you respond?:");
                 Console.WriteLine("1 - Try to hold in your cough");
                 Console.WriteLine("2 - Have a coughing fit in front of everyone");
-                input = Console.ReadLine();
-                if (input == "1")
+                input = Checks.GetKey();
+                if (input == CheckKey._1)
                 {
                     player.UpdateEnergy(-5);
                     player.UpdateGrade(5, ClassType);
@@ -312,8 +343,8 @@ class ClassSession
                 Console.WriteLine("whatever shall you do?:");
                 Console.WriteLine("1 - Laugh obnoxiously loud");
                 Console.WriteLine("2 - Do not look amused");
-                input = Console.ReadLine();
-                if (input == "1")
+                input = Checks.GetKey();
+                if (input == CheckKey._1)
                 {
                     player.UpdateEnergy(-5);
                     player.UpdateGrade(5, ClassType);
@@ -330,8 +361,8 @@ class ClassSession
                 Console.WriteLine("Either way you're cooked but try to deal with it anyway:");
                 Console.WriteLine("1 - Blame your dog!");
                 Console.WriteLine("2 - Confess the true truth");
-                input = Console.ReadLine();
-                if (input == "1")
+                input = Checks.GetKey();
+                if (input == CheckKey._1)
                 {
                     player.UpdateEnergy(-5);
                     player.UpdateGrade(-10, ClassType);
@@ -350,8 +381,8 @@ class ClassSession
                 Console.WriteLine("panic mode... what will you do??:");
                 Console.WriteLine("1 - Try to answer correctly");
                 Console.WriteLine("2 - Look down and pretend to take notes");
-                input = Console.ReadLine();
-                if (input == "1")
+                input = Checks.GetKey();
+                if (input == CheckKey._1)
                 {
                     player.UpdateGrade(10, ClassType);
                     player.UpdateEnergy(-10);
@@ -370,8 +401,8 @@ class ClassSession
                 Console.WriteLine("Choose your response");
                 Console.WriteLine("1 - Blame the person next to you");
                 Console.WriteLine("2 - Pretend it was your silly ringtone");
-                input = Console.ReadLine();
-                if (input == "1")
+                input = Checks.GetKey();
+                if (input == CheckKey._1)
                 {
                     player.UpdateEnergy(5);
                     player.UpdateGrade(-5, ClassType);
@@ -452,18 +483,18 @@ public partial class Program
         Console.WriteLine("2. Elena.");
         Console.WriteLine("3. Kate.");
 
-        int characterChoice = int.Parse(Console.ReadLine());
-        switch (characterChoice)
+        // int characterChoice = int.Parse(Console.ReadLine());
+        switch (Checks.GetKey())
         {
-            case 1:
+            case CheckKey._1:
                 chosenCharacter = chara._Jonathan;
                 break;
 
-            case 2:
+            case CheckKey._2:
                 chosenCharacter = chara._Elena;
                 break;
 
-            case 3:
+            case CheckKey._3:
                 chosenCharacter = chara._Kate;
                 break;
 
