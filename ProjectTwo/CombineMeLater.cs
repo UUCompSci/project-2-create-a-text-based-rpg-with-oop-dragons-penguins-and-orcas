@@ -52,7 +52,6 @@ class PlayerCharacter
         Grade += change;
     }
 
-
     // ADDED BY JONATHAN
     // stuff for the merch store lol
     public double _BusterBucks { get; set; }
