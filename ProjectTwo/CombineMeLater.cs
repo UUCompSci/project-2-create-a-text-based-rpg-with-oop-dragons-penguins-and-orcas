@@ -25,7 +25,6 @@ public record Professor(string Name, SchoolClass ClassType);
 class PlayerCharacter
 {
     //player classes go here
-    private CharacterAbilities _abilities = new();
     private int _grade;
     private int _energy;
     //grade and energy are both 0 to 100. each action taken will either decrease or increase grade and energy
@@ -52,6 +51,7 @@ class PlayerCharacter
         Grade += change;
     }
 
+
     // ADDED BY JONATHAN
     // stuff for the merch store lol
     public double _BusterBucks { get; set; }
@@ -66,6 +66,14 @@ class PlayerCharacter
     public void AddItemToInventory(string item) // also also copied from me and William's project
     {
         _Inventory.Add(item);
+    }
+
+
+    // STUFF FOR ELENA
+    private CharacterStats _abilities = new();
+    public PlayerCharacter(CharacterStats abilities)
+    {
+        _abilities = abilities;
     }
 }
 
@@ -425,6 +433,8 @@ public partial class Program
 
 
         // CHOOSE YOUR CHARACTER
+        Character chara = new();
+
         Console.WriteLine("Choose your character:");
         Console.WriteLine("1. Jonathan.");
         Console.WriteLine("2. Elena.");
