@@ -45,7 +45,7 @@ public partial class Program
         Character chara = new();
         CharacterStats chosenCharacter = new();
 
-        Console.WriteLine("Choose your character:");
+        Console.WriteLine("Welcome to life on University's campus! This school has a passing grade for all classes of a C. So, try to keep your grade up as you struggle through the semester! Please select the student you would like to play as:");
         Console.WriteLine("1. Jonathan.");
         Console.WriteLine("2. Elena.");
         Console.WriteLine("3. Kate.");
