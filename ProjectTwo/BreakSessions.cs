@@ -2,21 +2,6 @@ using System;
 using System.Security.Cryptography;
 using static System.Console;
 
-
-// for testing
-// TempVaraibles tempObject = new();
-// tempObject._EnergyLevel = 40;
-// tempObject._StudyLevel = 60;
-// tempObject._BusterBucks = 198.46;
-
-// StoreItem testBook = new("Testbook", 62.79, "A testbook, not a textbook.");
-// StoreItem textBook = new("Textbook", 71.58, "This, however, IS a textbook.");
-
-// List<StoreItem> testItems = [ testBook, textBook ];
-
-// BreakSessions testSession = new(LocationsEnum.DormRoom);
-// testSession.RunBreakSession(tempObject, LocationsEnum.MerchStore, testItems);
-
 class BreakSessions
 {
     private Enum _Location; // dorm room is default
@@ -103,10 +88,13 @@ class BreakSessions
         }
     }
 
-    public void GoToMerchStore(PlayerCharacter obj, List<StoreItem> items)
+    public void GoToMerchStore(PlayerCharacter obj, List<StoreItem> items, MerchStuff wallet)
     {
         _Location = LocationsEnum.MerchStore;
         WriteLine("You went to the merch store. Here's what you can buy:");
+
+        // create a reference to _BusterBucks
+        double w = MerchStuff._BusterBucks;
 
         for (int i = 0; i < items.Count; i++)
         {
@@ -119,7 +107,7 @@ class BreakSessions
                 WriteLine($"{i + 2}. Leave.");
             }
         }
-        WriteLine($"You have {obj._BusterBucks} Buster-Bucks. Will you buy anything?");
+        WriteLine($"You have {w} Buster-Bucks. Will you buy anything?");
 
         // determine choice
         int choice = (int)(Checks.GetKey() - 48) - 1;
@@ -128,10 +116,10 @@ class BreakSessions
         if (choice < items.Count && items[choice] != null)
 
             // if you can afford the item, buy it
-            if (items[choice]._Cost <= obj._BusterBucks)
+            if (items[choice]._Cost <= w)
             {
-                obj._BusterBucks -= items[choice]._Cost;
-                obj.AddItemToInventory(items[choice]._Name);
+                wallet.AddBucks(-items[choice]._Cost);
+                wallet.AddItemToInventory(items[choice]._Name);
 
                 WriteLine("Thank you. Have a nice day.");
             }
@@ -144,45 +132,7 @@ class BreakSessions
             WriteLine("Have a nice day, then.");
         }
     }
-
-    public void RunBreakSession(PlayerCharacter obj, Enum location, List<StoreItem> storeItems)
-    {
-        switch (location)
-        {
-            case LocationsEnum.Cobo:
-                GoToCobo(obj);
-                break;
-
-            case LocationsEnum.MerchStore:
-                GoToMerchStore(obj, storeItems);
-                break;
-
-            default: // go to dorm room
-                GoToDormRoom(obj);
-                break;
-        }
-    }
 }
-
-// class TempVaraibles // I spelled 'Variables' wrong xD
-// {
-//     public int _EnergyLevel { get; set; }
-//     public int _StudyLevel { get; set; }
-//     public double _BusterBucks { get; set; }
-
-//     private List<string> _Inventory = new();
-//     public void DisplayInventory() // also copied from me and William's project
-//     {
-//         foreach (string item in _Inventory)
-//         {
-//             Console.WriteLine("- " + item);
-//         }
-//     }
-//     public void AddItemToInventory(string item) // also also copied from me and William's project
-//     {
-//         _Inventory.Add(item);
-//     }
-// }
 
 class StoreItem
 {

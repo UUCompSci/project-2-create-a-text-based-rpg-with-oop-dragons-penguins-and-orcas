@@ -69,6 +69,7 @@ public partial class Program
                 Checks.ErrorMessage();
                 break;
         }
+        Console.WriteLine();
 
         // CREATE THE CHARACTER
         PlayerCharacter player = new();
@@ -78,12 +79,15 @@ public partial class Program
         player.DisplayStats();
         Console.WriteLine();
 
+        // create the player's invetory, buster bucks, etc.
+        MerchStuff playerWallet = new(500.00);
+
         //run classes in shuffled order
         foreach (var schoolClass in classOrder)
         {
             var professor = profs.Find(p => p.ClassType == schoolClass);
             var session = new ClassSession(schoolClass, professor);
-            session.Run(player);//this part doesn't work right now but this line but "player" here will be updated once the rest of code is combined
+            session.Run(player, playerWallet);
         }
         Checks.WinConditions(player.Grade);
     }
@@ -159,10 +163,10 @@ class PlayerCharacter
 
 
     // STUFF FOR ELENA
-    private string _strength;
-    private string _weakness;
-    private int _strValue;
-    private int _wknValue;
+    public string _strength;
+    public string _weakness;
+    public int _strValue;
+    public int _wknValue;
     public void AdjustStats(CharacterStats characterName)
     {
         _strength = characterName.Strength;
@@ -177,20 +181,35 @@ class PlayerCharacter
     }
 }
 
+// handles the player's inventory and Buster Bucks
 class MerchStuff
 {
-    public double _BusterBucks { get; set; }
+    public static double _BusterBucks { get; set; }
+    public void AddBucks(double increase)
+    {
+        _BusterBucks += increase;
+    }
+    public MerchStuff(double startingBucks)
+    {
+        _BusterBucks = startingBucks;
+    }
+
     private List<string> _Inventory = new();
     public void DisplayInventory() // copied from me and William's project
     {
         foreach (string item in _Inventory)
         {
-            Console.WriteLine("- " + item);
+            Console.WriteLine($"- " + item);
         }
     }
     public void AddItemToInventory(string item) // also also copied from me and William's project
     {
         _Inventory.Add(item);
+    }
+    public void UseItem()
+    {
+        Console.WriteLine("Which item would you like to use?");
+        DisplayInventory();
     }
 }
 
@@ -218,7 +237,7 @@ class ClassSession
         Professor = professor;
     }
 
-    public void Run(PlayerCharacter player)
+    public void Run(PlayerCharacter player, MerchStuff playerWallet)
     {
         Console.WriteLine($"\n--- Now attending {ClassType} with Professor {Professor.Name} ---");//new line!
         Console.WriteLine($"You have {ActionsAllowed} actions during this class.");
@@ -247,11 +266,15 @@ class ClassSession
                 continue;
             }
 
+
+            int tenGrade = 10;
+            int fiveGrade = 5;
+
             Console.WriteLine($"Actions left: {actionsLeft}");
             Console.WriteLine("Choose an action:");
-            Console.WriteLine("1 - Ask Questions (-10 Energy, +10 Grade)");
+            Console.WriteLine($"1 - Ask Questions (-10 Energy, +{tenGrade} Grade)");
             Console.WriteLine("2 - Participate in Discussions (-10 Energy, +10 Grade)");
-            Console.WriteLine("3 - Try to Decode Professor's Handwriting (-5 Energy, +5 Grade)");
+            Console.WriteLine($"3 - Try to Decode Professor's Handwriting (-5 Energy, +{fiveGrade} Grade)");
             Console.WriteLine("4 - Quote Some Random Philosopher (-5 Energy, +5 Grade)");
             Console.WriteLine("5 - Go to the Bathroom (+5 Energy, -5 Grade)");
             Console.WriteLine("6 - Text Your BFF (+5 Energy, -5 Grade)");
@@ -343,14 +366,15 @@ class ClassSession
         Console.WriteLine("2. COBO.");
         Console.WriteLine("3. Merch Store.");
 
-        // test items for the Merch Stroe
-        StoreItem testBook = new("Testbook", 62.79, "A testbook, not a textbook.");
-        StoreItem textBook = new("Textbook", 71.58, "This, however, IS a textbook.");
+        // items for the merch store
+        StoreItem granolaBar = new("Not-Chewy Granola Bar", 51.49, "Restores your Energy by 15. Can be used in class");
+        StoreItem penPaper = new("Pen and Paper", 62.45, "Increases your Grade by 15. Can be used in class");
+        StoreItem textBook = new("All-Class Textbook", 184.75, "For all actions that raise your Grade, this increase that by 10. Can be used in class");
 
-        List<StoreItem> testItems = [testBook, textBook];
+        List<StoreItem> items = [granolaBar, penPaper, textBook];
+
 
         // get player input
-        // int playerInput = int.Parse(Console.ReadLine());
         switch (Checks.GetKey())
         {
             case CheckKey._1:
@@ -362,7 +386,7 @@ class ClassSession
                 break;
 
             case CheckKey._3:
-                breakSession.GoToMerchStore(player, testItems);
+                breakSession.GoToMerchStore(player, items, playerWallet);
                 break;
             default:
                 Checks.ErrorMessage();
