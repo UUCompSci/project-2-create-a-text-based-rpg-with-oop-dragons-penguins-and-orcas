@@ -242,7 +242,7 @@ class MerchStuff
             int chosenItem = (int)(Checks.GetKey() - 48) - 1;
 
             // Item has an effect
-            if (_Inventory[chosenItem] != null)
+            if (chosenItem <= _Inventory.Count() && _Inventory[chosenItem] != null)
             {
                 switch (_Inventory[chosenItem])
                 {
