@@ -266,20 +266,63 @@ class ClassSession
                 continue;
             }
 
-
+            int negFourtyGrade = -40;
             int tenGrade = 10;
+            int negTenGrade = -10;
             int fiveGrade = 5;
+            int negFiveGrade = -5;
+
+            if (ClassType == SchoolClass.ComputerScience & player._strength == "ComputerScience")
+            {
+                negFourtyGrade += player._strValue;
+                tenGrade += player._strValue;
+                negTenGrade += player._strValue;
+                fiveGrade += player._strValue;
+                negFiveGrade += player._strValue;
+            }
+            else if (ClassType == SchoolClass.French & player._strength == "French")
+            {
+                negFourtyGrade += player._strValue;
+                tenGrade += player._strValue;
+                negTenGrade += player._strValue;
+                fiveGrade += player._strValue;
+                negFiveGrade += player._strValue;
+            }
+            else if (ClassType == SchoolClass.Biology & player._weakness == "Biology")
+            {
+                negFourtyGrade -= player._wknValue;
+                tenGrade -= player._wknValue;
+                negTenGrade -= player._wknValue;
+                fiveGrade -= player._wknValue;
+                negFiveGrade -= player._wknValue;
+            }
+            else if (ClassType == SchoolClass.WorldCiv & player._weakness == "WorldCiv")
+            {
+                negFourtyGrade -= player._wknValue;
+                tenGrade -= player._wknValue;
+                negTenGrade -= player._wknValue;
+                fiveGrade -= player._wknValue;
+                negFiveGrade -= player._wknValue;
+            }
+            else if (ClassType == SchoolClass.ArtHistory & player._weakness == "ArtHistory")
+            {
+                negFourtyGrade -= player._wknValue;
+                tenGrade -= player._wknValue;
+                negTenGrade -= player._wknValue;
+                fiveGrade -= player._wknValue;
+                negFiveGrade -= player._wknValue;
+            }
 
             Console.WriteLine($"Actions left: {actionsLeft}");
             Console.WriteLine("Choose an action:");
-            Console.WriteLine($"1 - Ask Questions (-10 Energy, +{tenGrade} Grade)");
-            Console.WriteLine("2 - Participate in Discussions (-10 Energy, +10 Grade)");
-            Console.WriteLine($"3 - Try to Decode Professor's Handwriting (-5 Energy, +{fiveGrade} Grade)");
-            Console.WriteLine("4 - Quote Some Random Philosopher (-5 Energy, +5 Grade)");
-            Console.WriteLine("5 - Go to the Bathroom (+5 Energy, -5 Grade)");
-            Console.WriteLine("6 - Text Your BFF (+5 Energy, -5 Grade)");
-            Console.WriteLine("7 - Daydream About Wing Wednesday (+10 Energy, -10 Grade)");
-            Console.WriteLine("8 - Skip Class (+50 Energy, -40 Grade, ends class immediately)");
+            Console.WriteLine($"1 - Ask Questions (-10 Energy, Grade will change by {tenGrade} points)");
+            Console.WriteLine($"2 - Participate in Discussions (-10 Energy, Grade will change by {tenGrade} points)");
+            Console.WriteLine($"3 - Try to Decode Professor's Handwriting (-5 Energy, Grade will change by {fiveGrade} points)");
+            Console.WriteLine($"4 - Quote Some Random Philosopher (-5 Energy, Grade will change by {fiveGrade} points)");
+            Console.WriteLine($"5 - Go to the Bathroom (+5 Energy, Grade will change by {negFiveGrade} points)");
+            Console.WriteLine($"6 - Text Your BFF (+5 Energy, Grade will change by {negFiveGrade} points)");
+            Console.WriteLine($"7 - Daydream About Wing Wednesday (+10 Energy, Grade will change by {negTenGrade} points)");
+            Console.WriteLine($"8 - Skip Class (+50 Energy, Grade will change by {negFourtyGrade} points, ends class immediately)");
 
             // var input = Console.ReadLine();
 
@@ -340,7 +383,7 @@ class ClassSession
                     actionsLeft--;
                     break;
 
-                case CheckKey._8: //kkip class
+                case CheckKey._8: //skip class
                     player.UpdateEnergy(50);
                     player.UpdateGrade(-40, ClassType);
                     StuffWeNeed.PrintActionResult("You skipped class! Big energy boost, grade goes down by a lot. Class ends immediately.", player);
