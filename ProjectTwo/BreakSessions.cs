@@ -131,7 +131,7 @@ class BreakSessions
                 {
                     wallet.AddItemToInventory(items[choice]._Name);
                 }
-                WriteLine("Thank you. Have a nice day.");
+                WriteLine("Thank you. Have a nice day.\n");
             }
             else // you're broke!
             {
