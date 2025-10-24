@@ -494,7 +494,7 @@ class ClassSession
         // items for the merch store
         StoreItem granolaBar = new("Not-Chewy Granola Bar", 51.49, "Restores your Energy by 15. Can be used in class");
         StoreItem penPaper = new("Pen and Paper", 62.45, "Increases your Grade by 15. Can be used in class");
-        StoreItem textBook = new("All-Class Textbook", 184.75, "For all actions that raise your Grade, this increase that by 10. Can be used in class");
+        StoreItem textBook = new("All-Class Textbook", 184.75, "For all actions that raise your Grade, this increase that by 15. Passive effect during class actions.");
 
         List<StoreItem> items = [granolaBar, penPaper];
 
