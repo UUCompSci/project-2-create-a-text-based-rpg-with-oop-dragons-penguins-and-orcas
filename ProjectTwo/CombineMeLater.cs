@@ -76,23 +76,6 @@ class PlayerCharacter
     }
 
 
-    // ADDED BY JONATHAN
-    // stuff for the merch store lol
-    public double _BusterBucks { get; set; }
-    private List<string> _Inventory = new();
-    public void DisplayInventory() // also copied from me and William's project
-    {
-        foreach (string item in _Inventory)
-        {
-            Console.WriteLine("- " + item);
-        }
-    }
-    public void AddItemToInventory(string item) // also also copied from me and William's project
-    {
-        _Inventory.Add(item);
-    }
-
-
     // STUFF FOR ELENA
     private string _strength;
     private string _weakness;
@@ -109,6 +92,23 @@ class PlayerCharacter
     {
         Console.WriteLine($"Class Strength: {_strength}. You get a {_strValue} boost to your grade with this class.");
         Console.WriteLine($"Class Weakness: {_weakness}. You get a {_wknValue} point decrease when you're in this class.");
+    }
+}
+
+class MerchStuff
+{
+    public double _BusterBucks { get; set; }
+    private List<string> _Inventory = new();
+    public void DisplayInventory() // copied from me and William's project
+    {
+        foreach (string item in _Inventory)
+        {
+            Console.WriteLine("- " + item);
+        }
+    }
+    public void AddItemToInventory(string item) // also also copied from me and William's project
+    {
+        _Inventory.Add(item);
     }
 }
 
