@@ -122,7 +122,7 @@ class BreakSessions
         WriteLine($"You have {obj._BusterBucks} Buster-Bucks. Will you buy anything?");
 
         // determine choice
-        int choice = int.Parse(ReadLine()) - 1;
+        int choice = (int)(Checks.GetKey() - 48) - 1;
 
         // if the item you want exists, try to buy it
         if (choice < items.Count && items[choice] != null)
