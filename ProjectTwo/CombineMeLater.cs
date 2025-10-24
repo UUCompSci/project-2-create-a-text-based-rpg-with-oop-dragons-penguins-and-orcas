@@ -7,6 +7,88 @@ Special events also don't tell the player how they will affect energy/grade, so 
 inform player of energy and grade level after every action
 */
 
+//Main program.
+public partial class Program
+{
+    static void Main()
+    {
+        var profs = new List<Professor>
+        {
+            new Professor("Frank Anderson", SchoolClass.Bible),
+            new Professor("Victoria Malone", SchoolClass.French),
+            new Professor("Jason Strandquist", SchoolClass.WorldCiv),
+            new Professor("Mason Ruby", SchoolClass.ComputerScience),
+            new Professor("Christopher Nadaskay", SchoolClass.ArtHistory),
+            new Professor("Mark Bolyard", SchoolClass.Biology)
+        };
+
+        var classOrder = new List<SchoolClass>
+        {
+            SchoolClass.Bible,
+            SchoolClass.French,
+            SchoolClass.WorldCiv,
+            SchoolClass.ComputerScience,
+            SchoolClass.ArtHistory,
+            SchoolClass.Biology
+        };
+
+        var rnd = new Random();
+        //used the fisher yates method to shuffle class order
+        for (int i = classOrder.Count - 1; i > 0; i--)
+        {
+            int j = rnd.Next(i + 1);
+            (classOrder[i], classOrder[j]) = (classOrder[j], classOrder[i]);
+        }
+
+
+        // CHOOSE YOUR CHARACTER
+        Character chara = new();
+        CharacterStats chosenCharacter = new();
+
+        Console.WriteLine("Choose your character:");
+        Console.WriteLine("1. Jonathan.");
+        Console.WriteLine("2. Elena.");
+        Console.WriteLine("3. Kate.");
+
+        // int characterChoice = int.Parse(Console.ReadLine());
+        switch (Checks.GetKey())
+        {
+            case CheckKey._1:
+                chosenCharacter = chara._Jonathan;
+                break;
+
+            case CheckKey._2:
+                chosenCharacter = chara._Elena;
+                break;
+
+            case CheckKey._3:
+                chosenCharacter = chara._Kate;
+                break;
+
+            default:
+                Checks.ErrorMessage();
+                break;
+        }
+
+        // CREATE THE CHARACTER
+        PlayerCharacter player = new();
+        player.AdjustStats(chosenCharacter);
+
+        Console.WriteLine($"You have chosen {chosenCharacter.Name}! Here are their stats:");
+        player.DisplayStats();
+        Console.WriteLine();
+
+        //run classes in shuffled order
+        foreach (var schoolClass in classOrder)
+        {
+            var professor = profs.Find(p => p.ClassType == schoolClass);
+            var session = new ClassSession(schoolClass, professor);
+            session.Run(player);//this part doesn't work right now but this line but "player" here will be updated once the rest of code is combined
+        }
+        Checks.WinConditions(player.Grade);
+    }
+}
+
 //enums for class
 public enum SchoolClass
 {
@@ -439,85 +521,5 @@ static class StuffWeNeed
     {
         int index = rnd.Next(list.Count);
         return list[index];
-    }
-}
-public partial class Program
-{
-    static void Main()
-    {
-        var profs = new List<Professor>
-        {
-            new Professor("Frank Anderson", SchoolClass.Bible),
-            new Professor("Victoria Malone", SchoolClass.French),
-            new Professor("Jason Strandquist", SchoolClass.WorldCiv),
-            new Professor("Mason Ruby", SchoolClass.ComputerScience),
-            new Professor("Christopher Nadaskay", SchoolClass.ArtHistory),
-            new Professor("Mark Bolyard", SchoolClass.Biology)
-        };
-
-        var classOrder = new List<SchoolClass>
-        {
-            SchoolClass.Bible,
-            SchoolClass.French,
-            SchoolClass.WorldCiv,
-            SchoolClass.ComputerScience,
-            SchoolClass.ArtHistory,
-            SchoolClass.Biology
-        };
-
-        var rnd = new Random();
-        //used the fisher yates method to shuffle class order
-        for (int i = classOrder.Count - 1; i > 0; i--)
-        {
-            int j = rnd.Next(i + 1);
-            (classOrder[i], classOrder[j]) = (classOrder[j], classOrder[i]);
-        }
-
-
-        // CHOOSE YOUR CHARACTER
-        Character chara = new();
-        CharacterStats chosenCharacter = new();
-
-        Console.WriteLine("Choose your character:");
-        Console.WriteLine("1. Jonathan.");
-        Console.WriteLine("2. Elena.");
-        Console.WriteLine("3. Kate.");
-
-        // int characterChoice = int.Parse(Console.ReadLine());
-        switch (Checks.GetKey())
-        {
-            case CheckKey._1:
-                chosenCharacter = chara._Jonathan;
-                break;
-
-            case CheckKey._2:
-                chosenCharacter = chara._Elena;
-                break;
-
-            case CheckKey._3:
-                chosenCharacter = chara._Kate;
-                break;
-
-            default:
-                Checks.ErrorMessage();
-                break;
-        }
-
-        // CREATE THE CHARACTER
-        PlayerCharacter player = new();
-        player.AdjustStats(chosenCharacter);
-
-        Console.WriteLine($"You have chosen {chosenCharacter.Name}! Here are their stats:");
-        player.DisplayStats();
-        Console.WriteLine();
-
-        //run classes in shuffled order
-        foreach (var schoolClass in classOrder)
-        {
-            var professor = profs.Find(p => p.ClassType == schoolClass);
-            var session = new ClassSession(schoolClass, professor);
-            session.Run(player);//this part doesn't work right now but this line but "player" here will be updated once the rest of code is combined
-        }
-        Checks.WinConditions(player.Grade);
     }
 }
