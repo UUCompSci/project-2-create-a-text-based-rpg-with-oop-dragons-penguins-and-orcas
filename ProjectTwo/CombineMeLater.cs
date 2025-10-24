@@ -49,8 +49,9 @@ public partial class Program
         Console.WriteLine("1. Jonathan.");
         Console.WriteLine("2. Elena.");
         Console.WriteLine("3. Kate.");
+        Console.WriteLine("If you do not select one of these people you will be playing as a character with no name and no bonuses.");
 
-        // int characterChoice = int.Parse(Console.ReadLine());
+        
         switch (Checks.GetKey())
         {
             case CheckKey._1:
@@ -66,7 +67,7 @@ public partial class Program
                 break;
 
             default:
-                Checks.ErrorMessage();
+                Console.WriteLine("\nYou have decided to not heed my warning! You will be a nameless student now! Don't say that I did not warn you about what would happen if you did not select one of the characters listed above!\n");
                 break;
         }
         Console.WriteLine();
@@ -76,7 +77,15 @@ public partial class Program
         player.AdjustStats(chosenCharacter);
         player.UpdateEnergy(50);
 
-        Console.WriteLine($"You have chosen {chosenCharacter.Name}! Here are their stats:");
+        if (chosenCharacter.Name != null)
+        {
+            Console.WriteLine($"You have chosen {chosenCharacter.Name}! Here are their stats:");
+        }
+        else
+        {
+            Console.WriteLine("You are just a random student on campus. Here are your stats:");
+        }
+
         player.DisplayStats();
         Console.WriteLine();
 
@@ -402,14 +411,6 @@ class ClassSession
             Console.WriteLine($"7 - Daydream About Wing Wednesday (+10 Energy, Grade will change by {negTenGrade} points)");
             Console.WriteLine($"8 - Skip Class (+50 Energy, Grade will change by {negFourtyGrade} points, ends class immediately)");
             Console.WriteLine("9 - Use an item\n");
-
-            // var input = Console.ReadLine();
-
-            // if (!int.TryParse(input, out int choice) || choice < 1 || choice > 8)
-            // {
-            //     Console.WriteLine("Not an option. Try again!");
-            //     continue;
-            // }
 
             switch (Checks.GetKey())
             {
