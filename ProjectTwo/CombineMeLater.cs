@@ -74,6 +74,7 @@ public partial class Program
         // CREATE THE CHARACTER
         PlayerCharacter player = new();
         player.AdjustStats(chosenCharacter);
+        player.UpdateEnergy(50);
 
         Console.WriteLine($"You have chosen {chosenCharacter.Name}! Here are their stats:");
         player.DisplayStats();
@@ -240,28 +241,35 @@ class MerchStuff
             int chosenItem = (int)(Checks.GetKey() - 48) - 1;
 
             // Item has an effect
-            switch (_Inventory[chosenItem])
+            if (_Inventory[chosenItem] != null)
             {
-                case "Not-Chewy Granola Bar":
-                    Console.WriteLine("Your Energy went up by 15!");
-                    player.UpdateEnergy(15);
-                    break;
+                switch (_Inventory[chosenItem])
+                {
+                    case "Not-Chewy Granola Bar":
+                        Console.WriteLine("Your Energy went up by 15!");
+                        player.UpdateEnergy(15);
+                        break;
 
-                case "Pen and Paper":
-                    Console.WriteLine("Your Grade went up by 15!");
-                    player.UpdateGrade(15, SchoolClass.Bible); // no one's weakness is Bible haha
-                    break;
+                    case "Pen and Paper":
+                        Console.WriteLine("Your Grade went up by 15!");
+                        player.UpdateGrade(15, SchoolClass.Bible); // no one's weakness is Bible haha
+                        break;
 
-                default:
-                    Checks.ErrorMessage();
-                    break;
+                    default:
+                        Checks.ErrorMessage();
+                        break;
+                }
+
+                // Remove item
+                RemoveItemFromInvetory(_Inventory[chosenItem]);
+
+                // Reprint your status
+                StuffWeNeed.PrintStatus(player, playerWallet);
             }
-
-            // Remove item
-            RemoveItemFromInvetory(_Inventory[chosenItem]);
-
-            // Reprint your status
-            StuffWeNeed.PrintStatus(player, playerWallet);
+            else
+            {
+                Checks.ErrorMessage();
+            }
         }
         else
         {
@@ -368,6 +376,18 @@ class ClassSession
                 negTenGrade -= player._wknValue;
                 fiveGrade -= player._wknValue;
                 negFiveGrade -= player._wknValue;
+            }
+
+            // adjust values above if you bought the textbook
+            if (MerchStuff.boughtTextbook)
+            {
+                int textbookIncrease = 15;
+
+                negFourtyGrade += textbookIncrease;
+                tenGrade += textbookIncrease;
+                negTenGrade += textbookIncrease;
+                fiveGrade += textbookIncrease;
+                negFiveGrade += textbookIncrease;
             }
 
             Console.WriteLine($"Actions left: {actionsLeft}");
