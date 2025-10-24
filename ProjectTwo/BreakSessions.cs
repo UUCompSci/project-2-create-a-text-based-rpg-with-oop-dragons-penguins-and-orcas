@@ -17,7 +17,7 @@ class BreakSessions
         {
             // you're study level increases depending on how energized you are
             int studyIncrease = obj.Energy / 10;
-            obj.UpdateGrade(studyIncrease, SchoolClass.Bible);
+            obj.UpdateGrade(studyIncrease, SchoolClass.Bible); // no one's weak to Bible haha
 
             WriteLine($"and studied for a bit! Your Grade increased by {studyIncrease}!");
         }
@@ -119,8 +119,18 @@ class BreakSessions
             if (items[choice]._Cost <= w)
             {
                 wallet.AddBucks(-items[choice]._Cost);
-                wallet.AddItemToInventory(items[choice]._Name);
 
+                // don't add the textbook, just update a boolean
+                if (items[choice]._Name == "All-Class Textbook")
+                {
+                    wallet.UpdateBoughtTextbook(true);
+                }
+
+                // buy a typical item
+                else
+                {
+                    wallet.AddItemToInventory(items[choice]._Name);
+                }
                 WriteLine("Thank you. Have a nice day.");
             }
             else // you're broke!

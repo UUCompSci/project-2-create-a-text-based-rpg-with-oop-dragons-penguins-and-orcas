@@ -194,22 +194,79 @@ class MerchStuff
         _BusterBucks = startingBucks;
     }
 
-    private List<string> _Inventory = new();
-    public void DisplayInventory() // copied from me and William's project
+    public static bool boughtTextbook = false;
+    public void UpdateBoughtTextbook(bool youBoughtIt)
     {
-        foreach (string item in _Inventory)
+        boughtTextbook = youBoughtIt;
+    }
+
+    private List<string> _Inventory = new();
+    public void DisplayInventory() // copied from me and William's project, with some mods
+    {
+        Console.WriteLine($"Bought the All-Class Textbook? - {boughtTextbook}");
+        Console.WriteLine("Other items:");
+        if (_Inventory.Count() > 0)
         {
-            Console.WriteLine($"- " + item);
+            foreach (string item in _Inventory)
+            {
+                Console.WriteLine("- " + item);
+            }
+        }
+        else
+        {
+            Console.WriteLine("- None");
         }
     }
     public void AddItemToInventory(string item) // also also copied from me and William's project
     {
         _Inventory.Add(item);
     }
-    public void UseItem()
+    public void RemoveItemFromInvetory(string item)
     {
-        Console.WriteLine("Which item would you like to use?");
-        DisplayInventory();
+        _Inventory.Remove(item);
+    }
+    public void UseItem(PlayerCharacter player, MerchStuff playerWallet)
+    {
+        if (_Inventory.Count() > 0)
+        {
+            // Display the items
+            Console.WriteLine("Which item would you like to use?");
+            for (int i = 0; i < _Inventory.Count(); i++)
+            {
+                Console.WriteLine($"{i + 1} - " + _Inventory[i]);
+            }
+
+            // You chose an item
+            int chosenItem = (int)(Checks.GetKey() - 48) - 1;
+
+            // Item has an effect
+            switch (_Inventory[chosenItem])
+            {
+                case "Not-Chewy Granola Bar":
+                    Console.WriteLine("Your Energy went up by 15!");
+                    player.UpdateEnergy(15);
+                    break;
+
+                case "Pen and Paper":
+                    Console.WriteLine("Your Grade went up by 15!");
+                    player.UpdateGrade(15, SchoolClass.Bible); // no one's weakness is Bible haha
+                    break;
+
+                default:
+                    Checks.ErrorMessage();
+                    break;
+            }
+
+            // Remove item
+            RemoveItemFromInvetory(_Inventory[chosenItem]);
+
+            // Reprint your status
+            StuffWeNeed.PrintStatus(player, playerWallet);
+        }
+        else
+        {
+            Console.WriteLine("You have no usable items!");
+        }
     }
 }
 
@@ -250,7 +307,7 @@ class ClassSession
             specialEventHappened = true;
             string specialEvent = StuffWeNeed.PickRandom(SpecialEventsAvailable);
             SpecialEventsAvailable.Remove(specialEvent);//once a special event happens, that same special event will not occur again during the game, so it is removed from pool of avaliable events
-            HandleSpecialEvent(player, specialEvent);
+            HandleSpecialEvent(player, specialEvent, playerWallet);
         }
 
         while (actionsLeft > 0)
@@ -262,7 +319,7 @@ class ClassSession
                 player.UpdateEnergy(30); //+30 energy
                 player.UpdateGrade(-20, ClassType); //-20 grade 
                 actionsLeft--;
-                StuffWeNeed.PrintStatus(player);
+                StuffWeNeed.PrintStatus(player, playerWallet);
                 continue;
             }
 
@@ -280,6 +337,7 @@ class ClassSession
             Console.WriteLine("6 - Text Your BFF (+5 Energy, -5 Grade)");
             Console.WriteLine("7 - Daydream About Wing Wednesday (+10 Energy, -10 Grade)");
             Console.WriteLine("8 - Skip Class (+50 Energy, -40 Grade, ends class immediately)");
+            Console.WriteLine("9 - Use an item");
 
             // var input = Console.ReadLine();
 
@@ -294,57 +352,61 @@ class ClassSession
                 case CheckKey._1: // Ask questions
                     player.UpdateEnergy(-10);
                     player.UpdateGrade(10, ClassType);
-                    StuffWeNeed.PrintActionResult("good job asking questions!", player);
+                    StuffWeNeed.PrintActionResult("good job asking questions!", player, playerWallet);
                     actionsLeft--;
                     break;
 
                 case CheckKey._2: //participate in discussions
                     player.UpdateEnergy(-10);
                     player.UpdateGrade(10, ClassType);
-                    StuffWeNeed.PrintActionResult("You participated in discussions. Energy decreased, grade increased.", player);
+                    StuffWeNeed.PrintActionResult("You participated in discussions. Energy decreased, grade increased.", player, playerWallet);
                     actionsLeft--;
                     break;
 
                 case CheckKey._3: //decode professor's terrible handwriting
                     player.UpdateEnergy(-5);
                     player.UpdateGrade(5, ClassType);
-                    StuffWeNeed.PrintActionResult("You have miraculously succeeded in decoding the professor's handwriting. Slight energy spent, slight grade boost.", player);
+                    StuffWeNeed.PrintActionResult("You have miraculously succeeded in decoding the professor's handwriting. Slight energy spent, slight grade boost.", player, playerWallet);
                     actionsLeft--;
                     break;
 
                 case CheckKey._4: //quote philosopher to sound smart
                     player.UpdateEnergy(-5);
                     player.UpdateGrade(5, ClassType);
-                    StuffWeNeed.PrintActionResult("You quoted some random philosopher and now everyone things you're smarter than you actually are. Energy down, grade up.", player);
+                    StuffWeNeed.PrintActionResult("You quoted some random philosopher and now everyone things you're smarter than you actually are. Energy down, grade up.", player, playerWallet);
                     actionsLeft--;
                     break;
 
                 case CheckKey._5: //go to bathroom
                     player.UpdateEnergy(5);
                     player.UpdateGrade(-5, ClassType);
-                    StuffWeNeed.PrintActionResult("You went to the bathroom even though you didn't really need to. Energy up, grade down.", player);
+                    StuffWeNeed.PrintActionResult("You went to the bathroom even though you didn't really need to. Energy up, grade down.", player, playerWallet);
                     actionsLeft--;
                     break;
 
                 case CheckKey._6: //text your BFF ♥︎
                     player.UpdateEnergy(5);
                     player.UpdateGrade(-5, ClassType);
-                    StuffWeNeed.PrintActionResult("You texted your BFF silly memes. Energy up, grade down.", player);
+                    StuffWeNeed.PrintActionResult("You texted your BFF silly memes. Energy up, grade down.", player, playerWallet);
                     actionsLeft--;
                     break;
 
                 case CheckKey._7: //daydream about wing wednesday!
                     player.UpdateEnergy(10);
                     player.UpdateGrade(-10, ClassType);
-                    StuffWeNeed.PrintActionResult("You daydreamed about wing wednesday. Energy up, grade down more.", player);
+                    StuffWeNeed.PrintActionResult("You daydreamed about wing wednesday. Energy up, grade down more.", player, playerWallet);
                     actionsLeft--;
                     break;
 
                 case CheckKey._8: //kkip class
                     player.UpdateEnergy(50);
                     player.UpdateGrade(-40, ClassType);
-                    StuffWeNeed.PrintActionResult("You skipped class! Big energy boost, grade goes down by a lot. Class ends immediately.", player);
+                    StuffWeNeed.PrintActionResult("You skipped class! Big energy boost, grade goes down by a lot. Class ends immediately.", player, playerWallet);
                     actionsLeft = 0; //automatically end class
+                    break;
+
+                case CheckKey._9: // use an item
+                    playerWallet.UseItem(player, playerWallet);
                     break;
 
                 default:
@@ -353,8 +415,7 @@ class ClassSession
             }
         }
 
-        Console.WriteLine($"Class {ClassType} ended. Current status:");
-        StuffWeNeed.PrintStatus(player);//tell play energy/grade level
+        Console.WriteLine($"Class {ClassType} ended.");
 
 
         // ADDED BY JONATHAN
@@ -371,7 +432,13 @@ class ClassSession
         StoreItem penPaper = new("Pen and Paper", 62.45, "Increases your Grade by 15. Can be used in class");
         StoreItem textBook = new("All-Class Textbook", 184.75, "For all actions that raise your Grade, this increase that by 10. Can be used in class");
 
-        List<StoreItem> items = [granolaBar, penPaper, textBook];
+        List<StoreItem> items = [granolaBar, penPaper];
+
+        // add the book unless you've already bought it
+        if (!MerchStuff.boughtTextbook)
+        {
+            items.Add(textBook);
+        }
 
 
         // get player input
@@ -392,10 +459,10 @@ class ClassSession
                 Checks.ErrorMessage();
                 break;
         }
-        StuffWeNeed.PrintStatus(player); // print the player status after the break
+        StuffWeNeed.PrintStatus(player, playerWallet); // print the player status after the break
     }
 
-    private void HandleSpecialEvent(PlayerCharacter player, string eventName)
+    private void HandleSpecialEvent(PlayerCharacter player, string eventName, MerchStuff playerWallet)
     {
         Console.WriteLine($"\n*** Special Event: {eventName.Replace('_', ' ')} ***");//replace underscores with spaces. ***s are just for decoration
 
@@ -521,7 +588,7 @@ class ClassSession
                 break;
         }
 
-        StuffWeNeed.PrintStatus(player);
+        StuffWeNeed.PrintStatus(player, playerWallet);
     }
 }
 
@@ -530,15 +597,16 @@ static class StuffWeNeed
 {
     private static Random rnd = new();
 
-    public static void PrintActionResult(string message, PlayerCharacter player)
+    public static void PrintActionResult(string message, PlayerCharacter player, MerchStuff playerWallet)
     {
         Console.WriteLine(message);
-        PrintStatus(player);
+        PrintStatus(player, playerWallet);
     }
 
-    public static void PrintStatus(PlayerCharacter player)
+    public static void PrintStatus(PlayerCharacter player, MerchStuff playerWallet)
     {
         Console.WriteLine($"Current Energy: {player.Energy}, Current Grade: {player.Grade}");
+        playerWallet.DisplayInventory();
     }
 
     public static string PickRandom(List<string> list)
