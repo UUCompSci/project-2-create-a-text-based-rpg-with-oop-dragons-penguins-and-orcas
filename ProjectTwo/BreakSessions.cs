@@ -19,14 +19,14 @@ class BreakSessions
             int studyIncrease = obj.Energy / 10;
             obj.UpdateGrade(studyIncrease, SchoolClass.Bible); // no one's weak to Bible haha
 
-            WriteLine($"and studied for a bit! Your Grade increased by {studyIncrease}!");
+            WriteLine($"and studied for a bit! Your Grade increased by {studyIncrease}!\n");
         }
 
         // you're too tired and fall asleep
         else
         {
             obj.UpdateEnergy(50);
-            WriteLine("and fell asleep! Your Energy increased by 50.");
+            WriteLine("and fell asleep! Your Energy increased by 50.\n");
         }
     }
 
@@ -56,34 +56,34 @@ class BreakSessions
                 if (homestyleEffect >= 7)
                 {
                     obj.UpdateEnergy(50);
-                    WriteLine("and decided to get homestyle. It was actually good today! Your Energy increased by 60!");
+                    WriteLine("and decided to get homestyle. It was actually good today! Your Energy increased by 60!\n");
                 }
                 else
                 {
                     obj.UpdateEnergy(15);
-                    WriteLine("and decided to get homestyle. It wasn't good, and you didn't eat much of it. Your Energy increased by 15.");
+                    WriteLine("and decided to get homestyle. It wasn't good, and you didn't eat much of it. Your Energy increased by 15.\n");
                 }
 
                 break;
 
             case CoboMealsEnum.TacoBar: // they always give you way too much food haha
                 obj.UpdateEnergy(75);
-                WriteLine("and decided to go through the taco bar. You were given so much food, and it was good! Your Energy increased by 75!");
+                WriteLine("and decided to go through the taco bar. You were given so much food, and it was good! Your Energy increased by 75!\n");
                 break;
 
             case CoboMealsEnum.Dessert: // somehow this increases your energy MORE than bad homestyle
                 obj.UpdateEnergy(25);
-                WriteLine("and decided to get...just dessert? Man does it taste good, but your Energy only increases by 25.");
+                WriteLine("and decided to get...just dessert? Man does it taste good, but your Energy only increases by 25.\n");
                 break;
 
             case CoboMealsEnum.SaladBar: // I'll take Elena's word on this xD
                 obj.UpdateEnergy(-15);
-                WriteLine("and you decide to look over the salad bar. As usual, there's not anything edible. Your Energy decreases by 15...");
+                WriteLine("and you decide to look over the salad bar. As usual, there's not anything edible. Your Energy decreases by 15...\n");
                 break;
 
             default: // pizza's typically solid
                 obj.UpdateEnergy(50);
-                WriteLine("and decided to get pizza. It's typically solid. Your Energy increased by 50.");
+                WriteLine("and decided to get pizza. It's typically solid. Your Energy increased by 50.\n");
                 break;
         }
     }
@@ -107,7 +107,7 @@ class BreakSessions
                 WriteLine($"{i + 2}. Leave.");
             }
         }
-        WriteLine($"You have {w} Buster-Bucks. Will you buy anything?");
+        WriteLine($"You have {w} Buster-Bucks. Will you buy anything?\n");
 
         // determine choice
         int choice = (int)(Checks.GetKey() - 48) - 1;
@@ -135,11 +135,11 @@ class BreakSessions
             }
             else // you're broke!
             {
-                WriteLine("Sorry, you can't afford that. Have a nice day anyway.");
+                WriteLine("Sorry, you can't afford that. Have a nice day anyway.\n");
             }
         else // the item doesn't exist / you left
         {
-            WriteLine("Have a nice day, then.");
+            WriteLine("Have a nice day, then.\n");
         }
     }
 }
