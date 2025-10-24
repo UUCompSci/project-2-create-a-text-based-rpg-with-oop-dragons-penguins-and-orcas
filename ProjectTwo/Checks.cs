@@ -11,7 +11,7 @@ static class Checks
     }
     public static void ErrorMessage()
     {
-        Console.WriteLine("Input is invalid. Please use one of the listed keys.");
+        Console.WriteLine("\nInput is invalid. Please use one of the listed keys.\n");
     }
 
     public static void WinConditions(int grade)

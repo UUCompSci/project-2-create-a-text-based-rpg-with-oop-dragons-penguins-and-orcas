@@ -415,56 +415,56 @@ class ClassSession
             {
                 case CheckKey._1: // Ask questions
                     player.UpdateEnergy(-10);
-                    player.UpdateGrade(10, ClassType);
+                    player.UpdateGrade(tenGrade, ClassType);
                     StuffWeNeed.PrintActionResult("good job asking questions!\n", player, playerWallet);
                     actionsLeft--;
                     break;
 
                 case CheckKey._2: //participate in discussions
                     player.UpdateEnergy(-10);
-                    player.UpdateGrade(10, ClassType);
+                    player.UpdateGrade(tenGrade, ClassType);
                     StuffWeNeed.PrintActionResult("You participated in discussions. Energy decreased, grade increased.\n", player, playerWallet);
                     actionsLeft--;
                     break;
 
                 case CheckKey._3: //decode professor's terrible handwriting
                     player.UpdateEnergy(-5);
-                    player.UpdateGrade(5, ClassType);
+                    player.UpdateGrade(fiveGrade, ClassType);
                     StuffWeNeed.PrintActionResult("You have miraculously succeeded in decoding the professor's handwriting. Slight energy spent, slight grade boost.\n", player, playerWallet);
                     actionsLeft--;
                     break;
 
                 case CheckKey._4: //quote philosopher to sound smart
                     player.UpdateEnergy(-5);
-                    player.UpdateGrade(5, ClassType);
+                    player.UpdateGrade(fiveGrade, ClassType);
                     StuffWeNeed.PrintActionResult("You quoted some random philosopher and now everyone things you're smarter than you actually are. Energy down, grade up.\n", player, playerWallet);
                     actionsLeft--;
                     break;
 
                 case CheckKey._5: //go to bathroom
                     player.UpdateEnergy(5);
-                    player.UpdateGrade(-5, ClassType);
+                    player.UpdateGrade(negFiveGrade, ClassType);
                     StuffWeNeed.PrintActionResult("You went to the bathroom even though you didn't really need to. Energy up, grade down.\n", player, playerWallet);
                     actionsLeft--;
                     break;
 
                 case CheckKey._6: //text your BFF ♥︎
                     player.UpdateEnergy(5);
-                    player.UpdateGrade(-5, ClassType);
+                    player.UpdateGrade(negFiveGrade, ClassType);
                     StuffWeNeed.PrintActionResult("You texted your BFF silly memes. Energy up, grade down.\n", player, playerWallet);
                     actionsLeft--;
                     break;
 
                 case CheckKey._7: //daydream about wing wednesday!
                     player.UpdateEnergy(10);
-                    player.UpdateGrade(-10, ClassType);
+                    player.UpdateGrade(negTenGrade, ClassType);
                     StuffWeNeed.PrintActionResult("You daydreamed about wing wednesday. Energy up, grade down more.\n", player, playerWallet);
                     actionsLeft--;
                     break;
 
                 case CheckKey._8: //skip class
                     player.UpdateEnergy(50);
-                    player.UpdateGrade(-40, ClassType);
+                    player.UpdateGrade(negFourtyGrade, ClassType);
                     StuffWeNeed.PrintActionResult("You skipped class! Big energy boost, grade goes down by a lot. Class ends immediately.\n", player, playerWallet);
                     actionsLeft = 0; //automatically end class
                     break;
