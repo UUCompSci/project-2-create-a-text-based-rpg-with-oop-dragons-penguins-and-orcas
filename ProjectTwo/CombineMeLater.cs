@@ -285,7 +285,7 @@ class ClassSession
                 case CheckKey._3: //decode professor's terrible handwriting
                     player.UpdateEnergy(-5);
                     player.UpdateGrade(5, ClassType);
-                    StuffWeNeed.PrintActionResult("You tried have miraculously succeeded in decoding the professor's handwriting. Slight energy spent, slight grade boost.", player);
+                    StuffWeNeed.PrintActionResult("You have miraculously succeeded in decoding the professor's handwriting. Slight energy spent, slight grade boost.", player);
                     actionsLeft--;
                     break;
 
@@ -320,7 +320,7 @@ class ClassSession
                 case CheckKey._8: //kkip class
                     player.UpdateEnergy(50);
                     player.UpdateGrade(-40, ClassType);
-                    StuffWeNeed.PrintActionResult("You skipped class! Bige energy boost, grade goes down by a lot. Class ends immediately.", player);
+                    StuffWeNeed.PrintActionResult("You skipped class! Big energy boost, grade goes down by a lot. Class ends immediately.", player);
                     actionsLeft = 0; //automatically end class
                     break;
 
