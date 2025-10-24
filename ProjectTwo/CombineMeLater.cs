@@ -212,10 +212,11 @@ class MerchStuff
             {
                 Console.WriteLine("- " + item);
             }
+            Console.WriteLine();
         }
         else
         {
-            Console.WriteLine("- None");
+            Console.WriteLine("- None\n");
         }
     }
     public void AddItemToInventory(string item) // also also copied from me and William's project
@@ -246,12 +247,12 @@ class MerchStuff
                 switch (_Inventory[chosenItem])
                 {
                     case "Not-Chewy Granola Bar":
-                        Console.WriteLine("Your Energy went up by 15!");
+                        Console.WriteLine("Your Energy went up by 15!\n");
                         player.UpdateEnergy(15);
                         break;
 
                     case "Pen and Paper":
-                        Console.WriteLine("Your Grade went up by 15!");
+                        Console.WriteLine("Your Grade went up by 15!\n");
                         player.UpdateGrade(15, SchoolClass.Bible); // no one's weakness is Bible haha
                         break;
 
@@ -273,7 +274,7 @@ class MerchStuff
         }
         else
         {
-            Console.WriteLine("You have no usable items!");
+            Console.WriteLine("You have no usable items!\n");
         }
     }
 }
@@ -399,8 +400,8 @@ class ClassSession
             Console.WriteLine($"5 - Go to the Bathroom (+5 Energy, Grade will change by {negFiveGrade} points)");
             Console.WriteLine($"6 - Text Your BFF (+5 Energy, Grade will change by {negFiveGrade} points)");
             Console.WriteLine($"7 - Daydream About Wing Wednesday (+10 Energy, Grade will change by {negTenGrade} points)");
-            Console.WriteLine($"8 - Skip Class (+50 Energy, Grade will change by {negFourtyGrade} points, ends class immediately)\n");
-            Console.WriteLine("9 - Use an item");
+            Console.WriteLine($"8 - Skip Class (+50 Energy, Grade will change by {negFourtyGrade} points, ends class immediately)");
+            Console.WriteLine("9 - Use an item\n");
 
             // var input = Console.ReadLine();
 
