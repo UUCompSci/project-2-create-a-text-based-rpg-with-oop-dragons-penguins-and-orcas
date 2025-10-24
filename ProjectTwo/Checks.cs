@@ -34,4 +34,5 @@ public static class CheckKey
         public const ConsoleKey _6 = ConsoleKey.D6;
         public const ConsoleKey _7 = ConsoleKey.D7;
         public const ConsoleKey _8 = ConsoleKey.D8;
+        public const ConsoleKey _9 = ConsoleKey.D9;
     }
