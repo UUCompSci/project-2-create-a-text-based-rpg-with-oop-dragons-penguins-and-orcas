@@ -258,7 +258,7 @@ class ClassSession
             //accidentaly nap if energy goes to 0 :(
             if (player.Energy == 0)
             {
-                Console.WriteLine("You accidentally took a nap due to exhaustion!");
+                Console.WriteLine("You accidentally took a nap due to exhaustion!\n");
                 player.UpdateEnergy(30); //+30 energy
                 player.UpdateGrade(-20, ClassType); //-20 grade 
                 actionsLeft--;
@@ -322,7 +322,7 @@ class ClassSession
             Console.WriteLine($"5 - Go to the Bathroom (+5 Energy, Grade will change by {negFiveGrade} points)");
             Console.WriteLine($"6 - Text Your BFF (+5 Energy, Grade will change by {negFiveGrade} points)");
             Console.WriteLine($"7 - Daydream About Wing Wednesday (+10 Energy, Grade will change by {negTenGrade} points)");
-            Console.WriteLine($"8 - Skip Class (+50 Energy, Grade will change by {negFourtyGrade} points, ends class immediately)");
+            Console.WriteLine($"8 - Skip Class (+50 Energy, Grade will change by {negFourtyGrade} points, ends class immediately)\n");
 
             // var input = Console.ReadLine();
 
@@ -337,56 +337,56 @@ class ClassSession
                 case CheckKey._1: // Ask questions
                     player.UpdateEnergy(-10);
                     player.UpdateGrade(10, ClassType);
-                    StuffWeNeed.PrintActionResult("good job asking questions!", player);
+                    StuffWeNeed.PrintActionResult("good job asking questions!\n", player);
                     actionsLeft--;
                     break;
 
                 case CheckKey._2: //participate in discussions
                     player.UpdateEnergy(-10);
                     player.UpdateGrade(10, ClassType);
-                    StuffWeNeed.PrintActionResult("You participated in discussions. Energy decreased, grade increased.", player);
+                    StuffWeNeed.PrintActionResult("You participated in discussions. Energy decreased, grade increased.\n", player);
                     actionsLeft--;
                     break;
 
                 case CheckKey._3: //decode professor's terrible handwriting
                     player.UpdateEnergy(-5);
                     player.UpdateGrade(5, ClassType);
-                    StuffWeNeed.PrintActionResult("You have miraculously succeeded in decoding the professor's handwriting. Slight energy spent, slight grade boost.", player);
+                    StuffWeNeed.PrintActionResult("You have miraculously succeeded in decoding the professor's handwriting. Slight energy spent, slight grade boost.\n", player);
                     actionsLeft--;
                     break;
 
                 case CheckKey._4: //quote philosopher to sound smart
                     player.UpdateEnergy(-5);
                     player.UpdateGrade(5, ClassType);
-                    StuffWeNeed.PrintActionResult("You quoted some random philosopher and now everyone things you're smarter than you actually are. Energy down, grade up.", player);
+                    StuffWeNeed.PrintActionResult("You quoted some random philosopher and now everyone things you're smarter than you actually are. Energy down, grade up.\n", player);
                     actionsLeft--;
                     break;
 
                 case CheckKey._5: //go to bathroom
                     player.UpdateEnergy(5);
                     player.UpdateGrade(-5, ClassType);
-                    StuffWeNeed.PrintActionResult("You went to the bathroom even though you didn't really need to. Energy up, grade down.", player);
+                    StuffWeNeed.PrintActionResult("You went to the bathroom even though you didn't really need to. Energy up, grade down.\n", player);
                     actionsLeft--;
                     break;
 
                 case CheckKey._6: //text your BFF ♥︎
                     player.UpdateEnergy(5);
                     player.UpdateGrade(-5, ClassType);
-                    StuffWeNeed.PrintActionResult("You texted your BFF silly memes. Energy up, grade down.", player);
+                    StuffWeNeed.PrintActionResult("You texted your BFF silly memes. Energy up, grade down.\n", player);
                     actionsLeft--;
                     break;
 
                 case CheckKey._7: //daydream about wing wednesday!
                     player.UpdateEnergy(10);
                     player.UpdateGrade(-10, ClassType);
-                    StuffWeNeed.PrintActionResult("You daydreamed about wing wednesday. Energy up, grade down more.", player);
+                    StuffWeNeed.PrintActionResult("You daydreamed about wing wednesday. Energy up, grade down more.\n", player);
                     actionsLeft--;
                     break;
 
                 case CheckKey._8: //skip class
                     player.UpdateEnergy(50);
                     player.UpdateGrade(-40, ClassType);
-                    StuffWeNeed.PrintActionResult("You skipped class! Big energy boost, grade goes down by a lot. Class ends immediately.", player);
+                    StuffWeNeed.PrintActionResult("You skipped class! Big energy boost, grade goes down by a lot. Class ends immediately.\n", player);
                     actionsLeft = 0; //automatically end class
                     break;
 
@@ -407,7 +407,7 @@ class ClassSession
         Console.WriteLine("You have a break! Where would you like to go?");
         Console.WriteLine("1. Dorm Room.");
         Console.WriteLine("2. COBO.");
-        Console.WriteLine("3. Merch Store.");
+        Console.WriteLine("3. Merch Store.\n");
 
         // items for the merch store
         StoreItem granolaBar = new("Not-Chewy Granola Bar", 51.49, "Restores your Energy by 15. Can be used in class");
@@ -449,23 +449,23 @@ class ClassSession
                 if (ClassType == SchoolClass.ComputerScience)
                 {
                     player.UpdateGrade(-5, ClassType);
-                    Console.WriteLine("Since this is computer science, your grade drops by 5."); //automatically drop grade if you're currently in computer science
+                    Console.WriteLine("Since this is computer science, your grade drops by 5.\n"); //automatically drop grade if you're currently in computer science
                 }
                 Console.WriteLine("How will you respond?:");
                 Console.WriteLine("1 - Decide class is not worth going to anymore");
-                Console.WriteLine("2 - Try to keep learning in the dark");
+                Console.WriteLine("2 - Try to keep learning in the dark\n");
                 ConsoleKey input = Checks.GetKey();
                 if (input == CheckKey._1)
                 {
                     player.UpdateGrade(-10, ClassType);
                     player.UpdateEnergy(10);
-                    Console.WriteLine("You gave up on class. -10 grade, +10 energy.");
+                    Console.WriteLine("You gave up on class. -10 grade, +10 energy.\n");
                 }
                 else
                 {
                     player.UpdateGrade(10, ClassType);
                     player.UpdateEnergy(-10);
-                    Console.WriteLine("You keep learning despite being faced with total darkness. +10 grade, -10 energy.");
+                    Console.WriteLine("You keep learning despite being faced with total darkness. +10 grade, -10 energy.\n");
                 }
                 break;
 
@@ -473,17 +473,17 @@ class ClassSession
                 Console.WriteLine("You have a frog in your throat!");
                 Console.WriteLine("how will you respond?:");
                 Console.WriteLine("1 - Try to hold in your cough");
-                Console.WriteLine("2 - Have a coughing fit in front of everyone");
+                Console.WriteLine("2 - Have a coughing fit in front of everyone\n");
                 input = Checks.GetKey();
                 if (input == CheckKey._1)
                 {
                     player.UpdateEnergy(-5);
                     player.UpdateGrade(5, ClassType);
-                    Console.WriteLine("You held in the cough no matter how difficult it was. -5 energy, +5 grade.");
+                    Console.WriteLine("You held in the cough no matter how difficult it was. -5 energy, +5 grade.\n");
                 }
                 else
                 {
-                    Console.WriteLine("You coughed loudly and everyone stared at you the entire time. Grade and energy unchanged.");
+                    Console.WriteLine("You coughed loudly and everyone stared at you the entire time. Grade and energy unchanged.\n");
                 }
                 break;
 
@@ -491,17 +491,17 @@ class ClassSession
                 Console.WriteLine($"{Professor.Name} tells a bad joke!");
                 Console.WriteLine("whatever shall you do?:");
                 Console.WriteLine("1 - Laugh obnoxiously loud");
-                Console.WriteLine("2 - Do not look amused");
+                Console.WriteLine("2 - Do not look amused\n");
                 input = Checks.GetKey();
                 if (input == CheckKey._1)
                 {
                     player.UpdateEnergy(-5);
                     player.UpdateGrade(5, ClassType);
-                    Console.WriteLine("You laughed loudly and probably annoyed your classmates, but the professor appreciated it. -5 energy, +5 grade.");
+                    Console.WriteLine("You laughed loudly and probably annoyed your classmates, but the professor appreciated it. -5 energy, +5 grade.\n");
                 }
                 else
                 {
-                    Console.WriteLine("You stayed very serious. No changes to grade or energy.");
+                    Console.WriteLine("You stayed very serious. No changes to grade or energy.\n");
                 }
                 break;
 
@@ -509,19 +509,19 @@ class ClassSession
                 Console.WriteLine("You realized you forgot the homework that was due today!");
                 Console.WriteLine("Either way you're cooked but try to deal with it anyway:");
                 Console.WriteLine("1 - Blame your dog!");
-                Console.WriteLine("2 - Confess the true truth");
+                Console.WriteLine("2 - Confess the true truth\n");
                 input = Checks.GetKey();
                 if (input == CheckKey._1)
                 {
                     player.UpdateEnergy(-5);
                     player.UpdateGrade(-10, ClassType);
-                    Console.WriteLine("You blamed your ugly dog. -5 energy, -10 grade.");
+                    Console.WriteLine("You blamed your ugly dog. -5 energy, -10 grade.\n");
                 }
                 else
                 {
                     player.UpdateEnergy(-10);
                     player.UpdateGrade(-5, ClassType);
-                    Console.WriteLine("You confessed. -10 energy, -5 grade.");
+                    Console.WriteLine("You confessed. -10 energy, -5 grade.\n");
                 }
                 break;
 
@@ -529,19 +529,19 @@ class ClassSession
                 Console.WriteLine($"{Professor.Name} asks a question you don't know the answer to and makes eye contact with you!");
                 Console.WriteLine("panic mode... what will you do??:");
                 Console.WriteLine("1 - Try to answer correctly");
-                Console.WriteLine("2 - Look down and pretend to take notes");
+                Console.WriteLine("2 - Look down and pretend to take notes\n");
                 input = Checks.GetKey();
                 if (input == CheckKey._1)
                 {
                     player.UpdateGrade(10, ClassType);
                     player.UpdateEnergy(-10);
-                    Console.WriteLine("You answered correctly!. +10 grade, -10 energy.");
+                    Console.WriteLine("You answered correctly!. +10 grade, -10 energy.\n");
                 }
                 else
                 {
                     player.UpdateEnergy(5);
                     player.UpdateGrade(-5, ClassType);
-                    Console.WriteLine("You pretended to take awesome notes and the professor picked some other unfortunate soul. +5 energy, -5 grade.");
+                    Console.WriteLine("You pretended to take awesome notes and the professor picked some other unfortunate soul. +5 energy, -5 grade.\n");
                 }
                 break;
 
@@ -549,17 +549,17 @@ class ClassSession
                 Console.WriteLine("Your stomach growls loudly and everyone stares at you!");
                 Console.WriteLine("Choose your response");
                 Console.WriteLine("1 - Blame the person next to you");
-                Console.WriteLine("2 - Pretend it was your silly ringtone");
+                Console.WriteLine("2 - Pretend it was your silly ringtone\n");
                 input = Checks.GetKey();
                 if (input == CheckKey._1)
                 {
                     player.UpdateEnergy(5);
                     player.UpdateGrade(-5, ClassType);
-                    Console.WriteLine("You blamed your poor neighbor. +5 energy, -5 grade.");
+                    Console.WriteLine("You blamed your poor neighbor. +5 energy, -5 grade.\n");
                 }
                 else
                 {
-                    Console.WriteLine("You pretended it was your ringtone. No change to grade or energy.");
+                    Console.WriteLine("You pretended it was your ringtone. No change to grade or energy.\n");
                 }
                 break;
         }
